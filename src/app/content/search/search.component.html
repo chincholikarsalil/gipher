@@ -1,0 +1,32 @@
+<div *ngIf="fetchedSearchedGifs.length > 0">
+  <hr>
+  <div id="search-results" class="container col-xs-12">
+    <div *ngIf="this.fetchService.searchType == 'gif'; else sticker">
+      <h3>Searched GIFs</h3>
+    </div>
+    <ng-template #sticker>
+      <h3>Searched Stickers</h3>
+    </ng-template>
+    <br>
+    <div class="card-group">
+      <div class="cards" *ngFor="let gif of fetchedSearchedGifs">
+        <div class="card h-100 p-1">
+          <img class="card-img-top" src="{{ gif.images.downsized.url }}" alt="Card image" width="200px" height="160px">
+          <div class="card-body">
+            <h6 class="card-title">{{ gif.title }}</h6>
+          </div>
+          <div class="card-footer justify-content-between">
+            <button href="#" class="btn btn-outline-dark icon recommend">
+              <fa-icon [icon]="faRecommend" transform="shrink-4 left-7 up-6" (click)="recommend = true">
+              </fa-icon>
+            </button>
+            <button href="#" class="btn btn-outline-dark icon unrecommend">
+              <fa-icon [icon]="faUnrecommend" transform="shrink-4 left-7 up-6" (click)="recommend = false">
+              </fa-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

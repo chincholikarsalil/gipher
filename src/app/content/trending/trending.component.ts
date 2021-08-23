@@ -2,15 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { FetchGIFService } from 'src/app/services/fetch-gif.service';
 
 @Component({
-  selector: 'app-search',
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css']
+  selector: 'app-trending',
+  templateUrl: './trending.component.html',
+  styleUrls: ['./trending.component.css']
 })
-export class SearchComponent implements OnInit {
+export class TrendingComponent implements OnInit {
 
   constructor(public fetchService: FetchGIFService) { }
 
   ngOnInit(): void {
+    this.fetchService.fetchTrendingGifs();
   }
 
 }

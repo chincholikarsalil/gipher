@@ -10,6 +10,8 @@ import { RecommendationComponent } from './content/recommendation/recommendation
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { TrendingComponent } from './content/trending/trending.component';
+import { CardComponent } from './content/card/card.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     ContentComponent,
     SearchComponent,
-    RecommendationComponent
+    RecommendationComponent,
+    TrendingComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,

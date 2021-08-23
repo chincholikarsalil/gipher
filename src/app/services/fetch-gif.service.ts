@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Card } from '../card';
 
 @Injectable({
   providedIn: 'root'
@@ -22,8 +23,11 @@ export class FetchGIFService {
   entireQuery = '';
   trendingQuery = this.trendingEndpoint + this.api_key + this.limit + this.tail;
 
-  fetchedSearchedGifs: Array<any> = [];
-  fetchedTrendingGifs: Array<any> = [];
+  noResults: string = '';
+  searchArray: Array<Card> = [];
+  trendingArray: Array<Card> = [];
+  recommendedArray: Array<Card> = [];
+  card: Card | undefined;
 
   get trendingGifs(): Observable<any> {
     return this.httpClient.get(this.trendingQuery, {responseType: 'json'});
@@ -42,8 +46,13 @@ export class FetchGIFService {
   fetchTrendingGifs() {
     this.trendingGifs.subscribe(
       data => {
-        for(let i = 0; i < data.data.length; i++)
-          this.fetchedTrendingGifs.push(data.data[i]);
+        if(data.data.length == 0)
+          this.noResults = "No result found";
+        else
+          for(let i = 0; i < data.data.length; i++) {
+            this.card = new Card(data.data[i].title, data.data[i].images.downsized.url);
+            this.trendingArray.push(this.card);
+          }
       }
     );
   }
@@ -51,8 +60,13 @@ export class FetchGIFService {
   fetchSearchedGifs() {
     this.searchedGifs.subscribe(
       data => {
-        for(let i = 0; i < data.data.length; i++)
-          this.fetchedSearchedGifs.push(data.data[i]);
+        if(data.data.length == 0)
+          this.noResults = "No result found";
+        else
+          for(let i = 0; i < data.data.length; i++){
+            this.card = new Card(data.data[i].title, data.data[i].images.downsized.url);
+            this.searchArray.push(this.card);
+          }
       }
     );
   }
@@ -60,10 +74,24 @@ export class FetchGIFService {
   fetchSearchedStickers() {
     this.searchedStickers.subscribe(
       data => {
-        for(let i = 0; i < data.data.length; i++)
-          this.fetchedSearchedGifs.push(data.data[i]);
+        for(let i = 0; i < data.data.length; i++) {
+          this.card = new Card(data.data[i].title, data.data[i].images.downsized.url);
+          this.searchArray.push(this.card);
+        }
       }
     );
+  }
+
+  recommend(card: Card) {
+    card.recommend = true;
+    if (!this.recommendedArray.find(c => c.title === card.title)) {
+      this.recommendedArray.push(card);
+    }
+  }
+
+  unrecommend(card: Card) {
+    card.recommend = false;
+    this.recommendedArray = this.recommendedArray.filter((obj) => obj != this.recommendedArray.find(c => c.title === card.title));
   }
 
 }

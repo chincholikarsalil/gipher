@@ -1,0 +1,24 @@
+<div class="card h-100 p-1 gipher-card">
+  <img class="card-img-top gipher-image" src="{{ card.imgUrl }}" alt="Card image" width="200px" height="160px">
+  <div class="card-body">
+    <h6 class="card-title">{{ card.title }}</h6>
+  </div>
+  <div class="card-footer justify-content-between">
+    <div class="col-sm-12">
+      <div class="row">
+        <div class="col-sm-2" *ngIf="!card.recommend">
+          <button class="btn btn-outline-success icon recommend" (click)="this.fetchService.recommend(card)">
+            <fa-icon [icon]="faRecommend" transform="shrink-4 left-7 up-6">
+            </fa-icon>
+          </button>
+        </div>
+        <div class="col-sm-2" *ngIf="card.recommend">
+          <button class="btn btn-outline-danger icon unrecommend" (click)="this.fetchService.unrecommend(card)">
+            <fa-icon [icon]="faUnrecommend" transform="shrink-4 left-7 up-6">
+            </fa-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,24 +1,10 @@
-<div class="container col-sm-12">
-  <h3>Trending GIFs</h3>
+<div class="container col-sm-12" *ngIf="this.fetchService.recommendedArray.length > 0">
+  <h3>Recommended</h3>
   <br>
   <div class="card-group">
-    <div class="cards" *ngFor="let gif of fetchedTrendingGifs">
-      <div class="card h-100 p-1">
-        <img class="card-img-top" src="{{ gif.images.downsized.url }}" alt="Card image" width="200px" height="160px">
-        <div class="card-body">
-          <h6 class="card-title">{{ gif.title }}</h6>
-        </div>
-        <div class="card-footer justify-content-between">
-          <button href="#" class="btn btn-outline-dark icon recommend">
-            <fa-icon [icon]="faRecommend" transform="shrink-4 left-7 up-6" (click)="recommend = true">
-            </fa-icon>
-          </button>
-          <button href="#" class="btn btn-outline-dark icon unrecommend">
-            <fa-icon [icon]="faUnrecommend" transform="shrink-4 left-7 up-6" (click)="recommend = false">
-            </fa-icon>
-          </button>
-        </div>
-      </div>
+    <div class="cards" *ngFor="let card of this.fetchService.recommendedArray">
+      <app-card [card]="card"></app-card>
     </div>
   </div>
+  <hr>
 </div>

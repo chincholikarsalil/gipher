@@ -21,9 +21,7 @@ export class RecommendService {
   unrecommend(card: Card) {
     card.recommend = false;
     this.recommendedArray = this.recommendedArray.filter(
-      (obj) => {
-        obj != this.recommendedArray.find(c => c.title === card.title)
-      }
+      (obj) => obj != this.recommendedArray.find(c => c.title === card.title)
     );
   }
 }

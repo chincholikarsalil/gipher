@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { FetchGIFService } from '../services/fetch-gif.service';
+import { FetchService } from '../services/fetch.service';
 
 @Component({
   selector: 'app-header',
@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   searchQuery: string = '';
   searchType: string = 'gif';
 
-  constructor(private fetchService: FetchGIFService) { }
+  constructor(private fetchService: FetchService) { }
 
   ngOnInit(): void {
   }

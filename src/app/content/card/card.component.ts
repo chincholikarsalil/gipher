@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { faArrowDown, faArrowUp } from '@fortawesome/free-solid-svg-icons';
 import { Card } from 'src/app/card';
-import { FetchGIFService } from 'src/app/services/fetch-gif.service';
+import { FetchService } from 'src/app/services/fetch.service';
+import { RecommendService } from 'src/app/services/recommend.service';
 
 @Component({
   selector: 'app-card',
@@ -16,7 +17,7 @@ export class CardComponent implements OnInit {
   faRecommend = faArrowUp;
   faUnrecommend = faArrowDown;
 
-  constructor(public fetchService: FetchGIFService) { }
+  constructor(public fetchService: FetchService, public recommendService: RecommendService) { }
 
   ngOnInit(): void {
   }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FetchGIFService } from 'src/app/services/fetch-gif.service';
+import { FetchService } from 'src/app/services/fetch.service';
 
 @Component({
   selector: 'app-trending',
@@ -8,7 +8,7 @@ import { FetchGIFService } from 'src/app/services/fetch-gif.service';
 })
 export class TrendingComponent implements OnInit {
 
-  constructor(public fetchService: FetchGIFService) { }
+  constructor(public fetchService: FetchService) { }
 
   ngOnInit(): void {
     this.fetchService.fetchTrendingGifs();

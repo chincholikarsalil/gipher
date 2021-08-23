@@ -6,7 +6,7 @@ import { Card } from '../card';
 @Injectable({
   providedIn: 'root'
 })
-export class FetchGIFService {
+export class FetchService {
 
   constructor(private httpClient: HttpClient) { }
 
@@ -26,7 +26,6 @@ export class FetchGIFService {
   noResults: string = '';
   searchArray: Array<Card> = [];
   trendingArray: Array<Card> = [];
-  recommendedArray: Array<Card> = [];
   card: Card | undefined;
 
   get trendingGifs(): Observable<any> {
@@ -80,18 +79,6 @@ export class FetchGIFService {
         }
       }
     );
-  }
-
-  recommend(card: Card) {
-    card.recommend = true;
-    if (!this.recommendedArray.find(c => c.title === card.title)) {
-      this.recommendedArray.push(card);
-    }
-  }
-
-  unrecommend(card: Card) {
-    card.recommend = false;
-    this.recommendedArray = this.recommendedArray.filter((obj) => obj != this.recommendedArray.find(c => c.title === card.title));
   }
 
 }

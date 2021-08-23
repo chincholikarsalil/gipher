@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { FetchGIFService } from './fetch-gif.service';
+import { FetchService } from './fetch.service';
 
-describe('FetchGIFService', () => {
-  let service: FetchGIFService;
+describe('FetchService', () => {
+  let service: FetchService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(FetchGIFService);
+    service = TestBed.inject(FetchService);
   });
 
   it('should be created', () => {

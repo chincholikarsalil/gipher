@@ -9,13 +9,13 @@
         <div class="col-sm-12">
           <div class="row">
             <div class="col-sm-2" *ngIf="!card.recommend">
-              <button class="btn btn-outline-success icon recommend" (click)="this.fetchService.recommend(card)">
+              <button class="btn btn-outline-success icon recommend" (click)="this.recommendService.recommend(card)">
                 <fa-icon [icon]="faRecommend" transform="shrink-4 left-7 up-6">
                 </fa-icon>
               </button>
             </div>
             <div class="col-sm-2" *ngIf="card.recommend">
-              <button class="btn btn-outline-danger icon unrecommend" (click)="this.fetchService.unrecommend(card)">
+              <button class="btn btn-outline-danger icon unrecommend" (click)="this.recommendService.unrecommend(card)">
                 <fa-icon [icon]="faUnrecommend" transform="shrink-4 left-7 up-6">
                 </fa-icon>
               </button>

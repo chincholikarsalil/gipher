@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FetchGIFService } from 'src/app/services/fetch-gif.service';
+import { RecommendService } from 'src/app/services/recommend.service';
 
 @Component({
   selector: 'app-recommendation',
@@ -8,7 +8,7 @@ import { FetchGIFService } from 'src/app/services/fetch-gif.service';
 })
 export class RecommendationComponent implements OnInit {
 
-  constructor(public fetchService: FetchGIFService) { }
+  constructor(public recommendService: RecommendService) { }
 
   ngOnInit(): void { }
 

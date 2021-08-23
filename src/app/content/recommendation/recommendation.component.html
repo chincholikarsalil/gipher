@@ -1,10 +1,6 @@
 <div class="container col-sm-12" *ngIf="this.fetchService.recommendedArray.length > 0">
   <h3>Recommended</h3>
   <br>
-  <div class="card-group">
-    <div class="cards" *ngFor="let card of this.fetchService.recommendedArray">
-      <app-card [card]="card"></app-card>
-    </div>
-  </div>
+  <app-card [cardArray]="this.fetchService.recommendedArray"></app-card>
   <hr>
 </div>

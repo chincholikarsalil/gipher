@@ -1,9 +1,5 @@
 <div class="container col-sm-12">
   <h3>Trending GIFs</h3>
   <br>
-  <div class="card-group">
-    <div class="cards" *ngFor="let card of this.fetchService.trendingArray">
-      <app-card [card]="card"></app-card>
-    </div>
-  </div>
+  <app-card [cardArray]="this.fetchService.trendingArray"></app-card>
 </div>

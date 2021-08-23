@@ -11,7 +11,7 @@ import { FetchGIFService } from 'src/app/services/fetch-gif.service';
 export class CardComponent implements OnInit {
 
   @Input()
-  card!: Card;
+  cardArray!: Array<Card>;
 
   faRecommend = faArrowUp;
   faUnrecommend = faArrowDown;

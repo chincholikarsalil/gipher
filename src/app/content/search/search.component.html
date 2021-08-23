@@ -8,17 +8,13 @@
       <h3>Searched Stickers</h3>
     </ng-template>
     <br>
-    <div class="card-group">
-      <div class="cards" *ngFor="let card of this.fetchService.searchArray">
-        <app-card [card]="card"></app-card>
-      </div>
-    </div>
+    <app-card [cardArray]="this.fetchService.searchArray"></app-card>
   </div>
 </div>
-<ng-template [ngIf]="this.fetchService.noResults.length > 0">
+<div *ngIf="this.fetchService.noResults.length > 0">
   <hr>
   <div id="search-results" class="container col-xs-12">
     <h3>Search Results</h3>
     <h5 class="text text-warning">{{ this.fetchService.noResults }}</h5>
   </div>
-</ng-template>
+</div>

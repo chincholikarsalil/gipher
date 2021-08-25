@@ -1,17 +1,29 @@
-<nav class="container-fluid navbar navbar-dark bg-dark justify-content-between">
+<nav class="container-fluid navbar-expand-lg navbar navbar-dark bg-dark">
   <div class="col-sm-12">
-    <div class="row navbar-brand">
-      <div class="col-sm-7">
+    <div class="row">
+      <div class="col-sm-8">
         <div class="row">
-          <div class="col-sm-1">
-            <img src="https://cdn.worldvectorlogo.com/logos/giphy-logo-1.svg" alt="giphy" height="40px" />
+          <div class="col-sm-2">
+            <div class="row">
+              <div class="col-sm-1"></div>
+              <div class="col-sm-3 p-1">
+                <img src="https://cdn.worldvectorlogo.com/logos/giphy-logo-1.svg" alt="giphy" height="40px" />
+              </div>
+              <div class="col-sm-7">
+                <a class="navbar-brand" href="/">Gipher</a>
+              </div>
+            </div>
           </div>
-          <div class="col-sm-11">
-            <h3>Gipher</h3>
+          <div class="col-sm-10 collapse navbar-collapse">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="my-recommendations">Recommendation</a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
-      <div class="col-sm-5">
+      <div class="col-sm-4">
         <div class="row form-group">
           <div class="col-sm-7">
             <input type="text" id="search-text-field" class="form-control" placeholder="Search"

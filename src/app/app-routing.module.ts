@@ -1,16 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
+import { ContentComponent } from './content/content.component';
+import { CardDetailsComponent } from './content/card-details/card-details.component';
 
 const routes: Routes = [
   {
-    path: '**',
+    path: '',
     redirectTo: '/my-recommendations',
     pathMatch: 'full'
   },
   { 
     path: 'my-recommendations',
-    component: AppComponent
+    component: ContentComponent
+  },
+  {
+    path: 'card-details/:id',
+    component: CardDetailsComponent
   }
 ];
 

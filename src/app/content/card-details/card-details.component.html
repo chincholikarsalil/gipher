@@ -1,0 +1,44 @@
+<div class="container" *ngIf="card">
+  <div class="container col-sm-12">
+    <h3 [innerHTML]="card.title"></h3>
+    <hr><br>
+    <div class="row">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4">
+        <img src="{{ card.imgUrl }}" alt="" width="360px" height="260px">
+      </div>
+      <div class="col-sm-4"></div>
+    </div>
+  </div>
+  <br><br>
+  <div class="col-sm-12">
+    <div class="row">
+      <div class="col-sm-5"></div>
+      <div class="col-sm-1">
+        <div class="row">
+          <div class="col-sm-2" *ngIf="!this.recommendService.isRecommended(card)">
+            <button class="btn btn-outline-success icon recommend" (click)="this.recommendService.recommend(card)">
+              <fa-icon [icon]="faRecommend" transform="shrink-2">
+              </fa-icon>
+            </button>
+          </div>
+          <div class="col-sm-2" *ngIf="this.recommendService.isRecommended(card)">
+            <button class="btn btn-outline-danger icon unrecommend" (click)="this.recommendService.unrecommend(card)">
+              <fa-icon [icon]="faUnrecommend" transform="shrink-2">
+              </fa-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-1">
+        <button class="btn btn-outline-dark btn-warning">
+          Favorite
+        </button>
+      </div>
+      <div class="col-sm-5"></div>
+    </div>
+  </div>
+  <br><br>
+  <hr>
+  <app-comments></app-comments>
+</div>

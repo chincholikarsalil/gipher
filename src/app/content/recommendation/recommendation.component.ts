@@ -10,6 +10,8 @@ export class RecommendationComponent implements OnInit {
 
   constructor(public recommendService: RecommendService) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.recommendService.updateRecommendedArray();
+  }
 
 }

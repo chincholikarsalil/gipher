@@ -1,0 +1,28 @@
+<div>
+  <div *ngIf="isLoggedIn(); else login">
+    <div class="col-sm-12">
+      <div class="row">
+        <div class="col-sm-10">
+          <textarea name="comment" class="comments col-sm-12" placeholder="Enter your comment"></textarea>
+        </div>
+        <div class="col-sm-2">
+          <button class="btn btn-success col-sm-12">
+            Comment
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #login>
+    <h5 class="text text-primary comments">Login First</h5>
+  </ng-template>
+  <hr>
+  <br>
+  <p>Sample comment...</p>
+  <br>
+  <p>Sample comment...</p>
+  <br>
+  <p>Sample comment...</p>
+  <br>
+  <p>Sample comment...</p>
+</div>

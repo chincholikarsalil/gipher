@@ -12,6 +12,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { TrendingComponent } from './content/trending/trending.component';
 import { CardComponent } from './content/card/card.component';
+import { CardDetailsComponent } from './content/card-details/card-details.component';
+import { CommentsComponent } from './content/card-details/comments/comments.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +24,9 @@ import { CardComponent } from './content/card/card.component';
     SearchComponent,
     RecommendationComponent,
     TrendingComponent,
+    CardDetailsComponent,
+    CommentsComponent,
+    FooterComponent,
     CardComponent
   ],
   imports: [

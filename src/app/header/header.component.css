@@ -1,8 +1,13 @@
-.navbar-brand h3{
+.navbar-brand {
     font-family: 'Lobster', cursive;
-    font-size: 32px;
+    font-size: 34px;
 }
 
 .form-group {
+    margin-top: 5px;
+}
+
+.nav-item {
+    font-size: 18px;
     margin-top: 5px;
 }

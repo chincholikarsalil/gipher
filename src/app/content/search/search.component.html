@@ -1,6 +1,6 @@
 <div *ngIf="this.fetchService.searchArray.length > 0">
-  <hr>
   <div id="search-results" class="container col-xs-12">
+    <hr>
     <div *ngIf="this.fetchService.searchType == 'gif'; else sticker">
       <h3>Searched GIFs</h3>
     </div>

@@ -77,3 +77,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+
+workspace.code-workspace

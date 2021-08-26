@@ -32,7 +32,7 @@ export class CardDetailsComponent implements OnInit {
         this.fetchService.searchId = params.get('id')?.toString();
         this.fetchService.searchById.subscribe(
           data => 
-            this.card = new Card(data.data.id, data.data.title, data.data.images.downsized.url)
+            this.card = new Card(data.id, data.title, data.imgUrl)
         )
       }
     );

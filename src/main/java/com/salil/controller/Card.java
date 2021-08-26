@@ -7,8 +7,9 @@ public class Card {
 	private String imgUrl;
 	private Boolean recommend;
 
-	public Card(String title, String imgUrl) {
+	public Card(String id, String title, String imgUrl) {
 		super();
+		this.id = id;
 		this.title = title;
 		this.imgUrl = imgUrl;
 		this.recommend = false;
@@ -46,8 +47,4 @@ public class Card {
 		this.recommend = recommend;
 	}
 
-	@Override
-	public String toString() {
-		return "<b>ID:</b> "+ id + "<br><b>Title:</b> " + title + "<br><img src='" + imgUrl + "' width=200px height=100px /><br><b>Recommend:</b> " + recommend;
-	}
 }

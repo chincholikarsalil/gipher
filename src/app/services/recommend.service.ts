@@ -17,7 +17,7 @@ export class RecommendService {
   }
 
   get recommended(): Observable<any> {
-    return this.http.get("http://localhost:8080/cards", {responseType: 'json'});
+    return this.http.get("http://localhost:8080/all-cards", {responseType: 'json'});
   }
 
   updateRecommendedArray() {
@@ -33,7 +33,7 @@ export class RecommendService {
   recommend(card: Card) {
     card.recommend = true;
     if (!this.recommendedArray.find(c => c.id === card.id)) {
-      this.http.post<Card>("http://localhost:8080/cards", card).subscribe();
+      this.http.post<Card>("http://localhost:8080/card/recommend", card).subscribe();
     }
     this.updateRecommendedArray();
   }
@@ -43,6 +43,6 @@ export class RecommendService {
     this.recommendedArray = this.recommendedArray.filter(
       (obj) => obj != this.recommendedArray.find(c => c.id === card.id)
     );
-    this.http.delete("http://localhost:8080/cards/delete/" + card.id).subscribe();
+    this.http.delete("http://localhost:8080/cards/unrecommend/" + card.id).subscribe();
   }
 }

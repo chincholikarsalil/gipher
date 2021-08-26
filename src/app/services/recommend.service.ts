@@ -36,6 +36,7 @@ export class RecommendService {
       this.http.post<Card>("http://localhost:8080/card/recommend", card).subscribe();
     }
     this.updateRecommendedArray();
+    this.router.navigate([this.router.url]);
   }
 
   unrecommend(card: Card) {
@@ -43,6 +44,6 @@ export class RecommendService {
     this.recommendedArray = this.recommendedArray.filter(
       (obj) => obj != this.recommendedArray.find(c => c.id === card.id)
     );
-    this.http.delete("http://localhost:8080/cards/unrecommend/" + card.id).subscribe();
+    this.http.delete("http://localhost:8080/card/unrecommend/" + card.id).subscribe();
   }
 }

@@ -24,6 +24,9 @@ export class CardDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.load();
+    document.getElementById('details')!.style.display = 'none';
+    setTimeout(() => {document.getElementById('preloader')!.style.display = 'none';}, 1000);
+    setTimeout(() => {document.getElementById('details')!.style.display = 'block';}, 1000);
   }
 
   load() {

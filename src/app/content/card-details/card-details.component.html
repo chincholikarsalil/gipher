@@ -1,4 +1,12 @@
-<div class="container" *ngIf="card">
+<div class="container col-md-12" id="preloader">
+  <div class="container col-md-6">
+    <div class="progress">
+      <div class="progress-bar" role="progressbar">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container" id="details">
   <div class="container col-sm-12">
     <h3 [innerHTML]="card.title"></h3>
     <hr><br>

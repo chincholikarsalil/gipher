@@ -14,6 +14,9 @@ export class PageNotFoundComponent implements OnInit {
 
   ngOnInit(): void {
     this.getNotFoundGif();
+    document.getElementById('not-found')!.style.display = 'none';
+    setTimeout(() => {document.getElementById('preloader')!.style.display = 'none';}, 1000);
+    setTimeout(() => {document.getElementById('not-found')!.style.display = 'block';}, 1000);
   }
 
   getNotFoundGif() {

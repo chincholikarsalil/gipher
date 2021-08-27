@@ -16,6 +16,7 @@ import { CardDetailsComponent } from './content/card-details/card-details.compon
 import { CommentsComponent } from './content/card-details/comments/comments.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
+import { PageNotFoundComponent } from './content/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { LoginComponent } from './login/login.component';
     CommentsComponent,
     FooterComponent,
     CardComponent,
-    LoginComponent
+    LoginComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

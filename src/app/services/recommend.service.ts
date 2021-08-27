@@ -17,7 +17,7 @@ export class RecommendService {
   }
 
   get recommended(): Observable<any> {
-    return this.http.get("http://localhost:8080/all-cards", {responseType: 'json'});
+    return this.http.get("http://localhost:8080/all-cards", { responseType: 'json' });
   }
 
   updateRecommendedArray() {

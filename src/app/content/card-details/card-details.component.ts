@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { faArrowDown, faArrowUp } from '@fortawesome/free-solid-svg-icons';
+import { Component, OnInit, Output } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { faArrowDown, faArrowUp, faHeart, faHeartBroken } from '@fortawesome/free-solid-svg-icons';
 import { Card } from '../../card';
 import { FetchService } from '../../services/fetch.service';
 import { RecommendService } from '../../services/recommend.service';
@@ -16,14 +16,18 @@ export class CardDetailsComponent implements OnInit {
 
   faRecommend = faArrowUp;
   faUnrecommend = faArrowDown;
+  faFavorite = faHeart;
+  faUnfavorite = faHeartBroken;
 
   constructor(
     public recommendService: RecommendService,
       private acivatedRoute: ActivatedRoute,
-        private fetchService: FetchService) { }
+        private fetchService: FetchService,
+          private router: Router) {
+            this.load();
+          }
 
   ngOnInit(): void {
-    this.load();
     document.getElementById('details')!.style.display = 'none';
     setTimeout(() => {document.getElementById('preloader')!.style.display = 'none';}, 1000);
     setTimeout(() => {document.getElementById('details')!.style.display = 'block';}, 1000);
@@ -34,8 +38,14 @@ export class CardDetailsComponent implements OnInit {
       params => {
         this.fetchService.searchId = params.get('id')?.toString();
         this.fetchService.searchById.subscribe(
-          data => 
-            this.card = new Card(data.id, data.title, data.imgUrl)
+          data => {
+            if(data)
+              this.card = new Card(data.id, data.title, data.imgUrl);
+          },
+          error => {
+            console.log(error.message);
+            this.router.navigateByUrl("/page-not-found");
+          }
         )
       }
     );

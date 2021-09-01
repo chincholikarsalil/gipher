@@ -1,12 +1,12 @@
-<div>
-  <div *ngIf="isLoggedIn(); else login">
+<div class="card p-2">
+  <div class="input-group input-group-lg p-2 mt-3 mb-3" *ngIf="isLoggedIn(); else login">
     <div class="col-sm-12">
       <div class="row">
         <div class="col-sm-10">
-          <textarea name="comment" class="comments col-sm-12" placeholder="Enter your comment"></textarea>
+          <input type="text" class="form-control col-sm-12" placeholder="Enter your comment" [(ngModel)]="comment" />
         </div>
-        <div class="col-sm-2">
-          <button class="btn btn-success col-sm-12">
+        <div class="input-group-btn col-sm-2">
+          <button class="btn btn-success col-sm-12" (click)="addComment()">
             Comment
           </button>
         </div>
@@ -14,15 +14,32 @@
     </div>
   </div>
   <ng-template #login>
-    <h5 class="text text-primary comments">Login First</h5>
+    <div class="p-1 mt-3 mb-3">
+      <button class="btn btn-primary container not-logged-in">Login First</button>
+    </div>
   </ng-template>
-  <hr>
   <br>
-  <p>Sample comment...</p>
-  <br>
-  <p>Sample comment...</p>
-  <br>
-  <p>Sample comment...</p>
-  <br>
-  <p>Sample comment...</p>
+  <div class="container col-sm-10 cards" *ngIf="userCommentArray">
+    <div class="card h-100 p-1 mb-3" *ngFor="let cmnt of userCommentArray; index as i">
+      <!-- User profile to be added with comment -->
+      <div class="card-body justify-content-between">
+        <div class="row">
+          <div class="col-sm-2">
+            <button class="btn btn-dark" disabled>
+              <fa-icon [icon]="faUser" transform="grow-2"></fa-icon>
+            </button>
+          </div>
+          <div class="col-sm-9">
+            <p [innerHTML]="cmnt"></p>
+          </div>
+          <div class="col-sm-1">
+            <button class="btn btn-outline-danger" (click)="deleteComment(i)">
+              <fa-icon [icon]="faDelete" transform="shrink-2"></fa-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+  </div>
 </div>

@@ -1,7 +1,12 @@
-package com.salil.controller;
+package com.salil.entities;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "recommended")
 public class Card {
 
+	@Id
 	private String id;
 	private String title;
 	private String imgUrl;
@@ -14,7 +19,7 @@ public class Card {
 		this.imgUrl = imgUrl;
 		this.recommend = false;
 	}
-	
+
 	public String getId() {
 		return id;
 	}

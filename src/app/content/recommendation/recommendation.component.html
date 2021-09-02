@@ -1,6 +1,12 @@
-<div class="container col-sm-12" *ngIf="this.recommendService.recommendedArray.length > 0">
+<div class="container col-sm-12">
   <h3>Recommended</h3>
   <br>
-  <app-card [cardArray]="this.recommendService.recommendedArray"></app-card>
-  <hr>
+  <div *ngIf="this.recommendService.recommendedArray.length > 0; else norecommended">
+    <app-card [cardArray]="this.recommendService.recommendedArray"></app-card>
+  </div>
+  <ng-template #norecommended>
+    <div id="search-results" class="container col-xs-12">
+      <h5 class="text text-warning">No recommendations yet</h5>
+    </div>
+  </ng-template>
 </div>

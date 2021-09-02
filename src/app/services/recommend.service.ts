@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Card } from '../card';
 
@@ -12,7 +11,7 @@ export class RecommendService {
   recommendedArray: Array<Card> = [];
   card: Card | undefined;
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient) {
     this.updateRecommendedArray();
   }
 
@@ -31,19 +30,19 @@ export class RecommendService {
   }
 
   recommend(card: Card) {
-    card.recommend = true;
     if (!this.recommendedArray.find(c => c.id === card.id)) {
       this.http.post<Card>("http://localhost:8080/card/recommend", card).subscribe();
     }
     this.updateRecommendedArray();
-    this.router.navigate([this.router.url]);
+    window.location.reload();
   }
 
   unrecommend(card: Card) {
-    card.recommend = false;
     this.recommendedArray = this.recommendedArray.filter(
       (obj) => obj != this.recommendedArray.find(c => c.id === card.id)
     );
-    this.http.delete("http://localhost:8080/card/unrecommend/" + card.id).subscribe();
+    this.http.post<Card>("http://localhost:8080/card/unrecommend", card).subscribe();
+    this.updateRecommendedArray();
+    window.location.reload();
   }
 }

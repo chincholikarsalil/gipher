@@ -48,7 +48,7 @@ export class CommentsComponent implements OnInit {
       this.userComment.id = this.cardId;
       this.userComment.comments = this.comment;
       this.http.post<string>('http://localhost:8080/comment/add', JSON.stringify(this.userComment)).subscribe();
-      window.location.reload()
+      window.location.reload();
     }
   }
 
@@ -58,7 +58,7 @@ export class CommentsComponent implements OnInit {
     this.userComment.comments = index.toString();
     console.log(index.toString());
     this.http.post<string>('http://localhost:8080/comment/delete', JSON.stringify(this.userComment)).subscribe();
-    window.location.reload()
+    window.location.reload();
   }
 
   isLoggedIn() {

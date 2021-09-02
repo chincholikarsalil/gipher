@@ -15,8 +15,13 @@ import { CardComponent } from './content/card/card.component';
 import { CardDetailsComponent } from './content/card-details/card-details.component';
 import { CommentsComponent } from './content/card-details/comments/comments.component';
 import { FooterComponent } from './footer/footer.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './content/login/login.component';
 import { PageNotFoundComponent } from './content/page-not-found/page-not-found.component';
+import { ProfileComponent } from './content/profile/profile.component';
+import { RegistrationComponent } from './content/registration/registration.component';
+import { ProfileSettingsComponent } from './content/profile/profile-settings/profile-settings.component';
+import { DashboardComponent } from './content/dashboard/dashboard.component';
+import { FavoritesComponent } from './content/favorites/favorites.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +36,12 @@ import { PageNotFoundComponent } from './content/page-not-found/page-not-found.c
     FooterComponent,
     CardComponent,
     LoginComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ProfileComponent,
+    RegistrationComponent,
+    ProfileSettingsComponent,
+    DashboardComponent,
+    FavoritesComponent
   ],
   imports: [
     BrowserModule,

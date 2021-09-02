@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
+import { faSearch, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FetchService } from '../services/fetch.service';
 
 @Component({
@@ -14,9 +15,14 @@ export class HeaderComponent implements OnInit {
   searchQuery: string = '';
   searchType: string = 'gif';
 
-  constructor(private fetchService: FetchService) { }
+  currentPage!: string;
+
+  faUser = faUser;
+
+  constructor(private fetchService: FetchService, private router: Router) { }
 
   ngOnInit(): void {
+    this.currentPage = window.location.href.split('/')[window.location.href.split('/').length - 1];
   }
 
   search() {

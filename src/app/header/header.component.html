@@ -10,14 +10,22 @@
                 <img src="https://cdn.worldvectorlogo.com/logos/giphy-logo-1.svg" alt="giphy" height="40px" />
               </div>
               <div class="col-sm-7">
-                <a class="navbar-brand" href="/">Gipher</a>
+                <a class="navbar-brand" href="dashboard">Gipher</a>
               </div>
             </div>
           </div>
           <div class="col-sm-10 collapse navbar-collapse">
             <ul class="navbar-nav">
-              <li class="nav-item">
+              <li class="nav-item" *ngIf="currentPage != 'my-recommendations'">
                 <a class="nav-link" href="my-recommendations">Recommendation</a>
+              </li>
+              <li class="nav-item" *ngIf="currentPage != '' && currentPage != 'dashboard'">
+                <a class="nav-link" href="dashboard">Dashboard</a>
+              </li>
+              <li class="nav-item" *ngIf="currentPage != 'profile'">
+                <a class="nav-link" href="profile">
+                  <fa-icon [icon]="faUser"></fa-icon>
+                </a>
               </li>
             </ul>
           </div>

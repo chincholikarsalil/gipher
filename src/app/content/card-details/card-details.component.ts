@@ -21,34 +21,28 @@ export class CardDetailsComponent implements OnInit {
 
   constructor(
     public recommendService: RecommendService,
-      private acivatedRoute: ActivatedRoute,
-        private fetchService: FetchService,
-          private router: Router) {
-            this.load();
-          }
+    private fetchService: FetchService,
+    private router: Router) {
+    this.load();
+  }
 
   ngOnInit(): void {
     document.getElementById('details')!.style.display = 'none';
-    setTimeout(() => {document.getElementById('preloader')!.style.display = 'none';}, 1000);
-    setTimeout(() => {document.getElementById('details')!.style.display = 'block';}, 1000);
+    setTimeout(() => { document.getElementById('preloader')!.style.display = 'none'; }, 500);
+    setTimeout(() => { document.getElementById('details')!.style.display = 'block'; }, 500);
   }
 
   load() {
-    this.acivatedRoute.paramMap.subscribe(
-      params => {
-        this.fetchService.searchId = params.get('id')?.toString();
-        this.fetchService.searchById.subscribe(
-          data => {
-            if(data)
-              this.card = new Card(data.id, data.title, data.imgUrl);
-          },
-          error => {
-            console.log(error.message);
-            this.router.navigateByUrl("/page-not-found");
-          }
-        )
+    this.fetchService.searchId = window.location.href.split('/')[window.location.href.split('/').length - 1];
+    this.fetchService.searchById.subscribe(
+      data => {
+        console.log(data)
+        this.card = new Card(data.id, data.title, data.imgUrl);
+      },
+      error => {
+        console.log(error.message);
+        this.router.navigateByUrl("/page-not-found");
       }
-    );
+    )
   }
-
 }

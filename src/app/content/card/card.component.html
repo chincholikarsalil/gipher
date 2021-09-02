@@ -20,6 +20,11 @@
                 </fa-icon>
               </button>
             </div>
+            <div class="col-sm-10 count" *ngIf="card.recommendCount > 0">
+              <button class="text text-dark counter">
+                {{ card.recommendCount }}
+              </button>
+            </div>
           </div>
         </div>
       </div>

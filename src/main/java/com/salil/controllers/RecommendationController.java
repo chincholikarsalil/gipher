@@ -30,13 +30,26 @@ public class RecommendationController {
 	@PostMapping("/card/recommend")
 	public void recommend(@RequestBody Card card) {
 		if(!this.repository.existsById(card.getId())) {
+			card.increment();
 			this.repository.insert(card);
+		} else {
+			Card temp = this.repository.findById(card.getId()).get();
+			temp.increment();
+			this.repository.save(temp);
 		}
 	}
 	
-	@DeleteMapping("/card/unrecommend/{id}")
-	public void unrecommend(@PathVariable String id) {
-		this.repository.deleteById(id);
+	@PostMapping("/card/unrecommend")
+	public void unrecommend(@RequestBody Card card) {
+		if(this.repository.existsById(card.getId())) {
+			Card temp = this.repository.findById(card.getId()).get();
+			if(temp.getRecommendCount() > 1) {
+				temp.decrement();
+				this.repository.save(temp);
+			} else {
+				this.repository.deleteById(card.getId());
+			}
+		}
 	}
 
 }

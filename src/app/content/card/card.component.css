@@ -14,3 +14,15 @@
     width: 10px;
     height: 25px;
 }
+
+.count {
+    text-align: end;
+}
+
+.counter {
+    width: 28px;
+    height: 28px;
+    background-color: lightskyblue;
+    border-radius: 100%;
+    border: 0px;
+}

@@ -1,5 +1,5 @@
-import { Component, OnInit, Output } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { faArrowDown, faArrowUp, faHeart, faHeartBroken } from '@fortawesome/free-solid-svg-icons';
 import { Card } from '../../card';
 import { FetchService } from '../../services/fetch.service';
@@ -19,12 +19,11 @@ export class CardDetailsComponent implements OnInit {
   faFavorite = faHeart;
   faUnfavorite = faHeartBroken;
 
-  constructor(
-    public recommendService: RecommendService,
+  constructor(public recommendService: RecommendService,
     private fetchService: FetchService,
-    private router: Router) {
-    this.load();
-  }
+      private router: Router) {
+        this.load();
+      }
 
   ngOnInit(): void {
     document.getElementById('details')!.style.display = 'none';
@@ -36,7 +35,6 @@ export class CardDetailsComponent implements OnInit {
     this.fetchService.searchId = window.location.href.split('/')[window.location.href.split('/').length - 1];
     this.fetchService.searchById.subscribe(
       data => {
-        console.log(data)
         this.card = new Card(data.id, data.title, data.imgUrl);
       },
       error => {

@@ -1,4 +1,4 @@
-<nav class="container-fluid navbar-expand-lg navbar navbar-dark bg-dark">
+<nav class="container-fluid navbar navbar-expand-lg navbar navbar-dark bg-dark">
   <div class="col-sm-12">
     <div class="row">
       <div class="col-sm-8">
@@ -19,13 +19,20 @@
               <li class="nav-item" *ngIf="currentPage != 'my-recommendations'">
                 <a class="nav-link" href="my-recommendations">Recommendation</a>
               </li>
-              <li class="nav-item" *ngIf="currentPage != '' && currentPage != 'dashboard'">
+              <li class="nav-item" *ngIf="currentPage != '' && currentPage != 'dashboard' && currentPage != '#'">
                 <a class="nav-link" href="dashboard">Dashboard</a>
               </li>
-              <li class="nav-item" *ngIf="currentPage != 'profile'">
-                <a class="nav-link" href="profile">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" role="button" (click)="show=!show">
                   <fa-icon [icon]="faUser"></fa-icon>
                 </a>
+                <ul class="dropdown dropdown-menu" [ngClass]="{show: show === true}">
+                  <li *ngIf="currentPage != 'profile'"><a class="dropdown-item" href="profile">Profile</a></li>
+                  <li *ngIf="currentPage != 'settings'"><a class="dropdown-item" href="profile/settings">Settings</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li *ngIf="!this.loginService.isLoggedIn()" (click)="this.loginService.login()"><a class="dropdown-item" href="login">Login</a></li>
+                  <li *ngIf="this.loginService.isLoggedIn()" (click)="this.loginService.logout()"><a class="dropdown-item" href="logout">Logout</a></li>
+                </ul>
               </li>
             </ul>
           </div>

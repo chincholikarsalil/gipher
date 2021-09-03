@@ -15,25 +15,35 @@
   </div>
   <ng-template #login>
     <div class="p-1 mt-3 mb-3">
-      <button class="btn btn-primary container not-logged-in">Login First</button>
+      <button class="btn btn-primary container not-logged-in" (click)="loginOk()">Login First</button>
     </div>
   </ng-template>
   <br>
-  <div class="container col-sm-10 cards" *ngIf="userCommentArray">
-    <div class="card h-100 p-1 mb-3" *ngFor="let cmnt of userCommentArray; index as i">
+  <div class="container col-sm-10 cards" *ngIf="userComment">
+    <div class="card h-100 mb-3" *ngFor="let cmnt of userComment.comments">
       <!-- User profile to be added with comment -->
-      <div class="card-body justify-content-between">
+      <div class="card-footer justify-content-between">
         <div class="row">
-          <div class="col-sm-2">
+          <div class="col-sm-1">
             <button class="btn btn-dark" disabled>
               <fa-icon [icon]="faUser" transform="grow-2"></fa-icon>
             </button>
           </div>
-          <div class="col-sm-9">
-            <p [innerHTML]="cmnt"></p>
+          <div class="col-sm-9 mt-1 ml-1">
+            <a>{{ cmnt.comment }}</a>
           </div>
-          <div class="col-sm-1">
-            <button class="btn btn-outline-danger" (click)="deleteComment(i)">
+          <div class="col-sm-1" *ngIf="isLoggedIn()">
+            <button class="btn btn-outline-info" (click)="likeComment(cmnt.commentId)">
+              <fa-icon [icon]="faLike" transform="shrink-2"></fa-icon>
+            </button>
+          </div>
+          <div class="col-sm-1" *ngIf="!isLoggedIn()">
+            <button class="btn btn-outline-dark" (click)="dislikeComment(cmnt.commentId)">
+              <fa-icon [icon]="faDislike" transform="shrink-2"></fa-icon>
+            </button>
+          </div>
+          <div class="col-sm-1" *ngIf="isLoggedIn()">
+            <button class="btn btn-outline-danger" (click)="deleteComment(cmnt.commentId)">
               <fa-icon [icon]="faDelete" transform="shrink-2"></fa-icon>
             </button>
           </div>

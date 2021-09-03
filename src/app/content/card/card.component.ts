@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { faArrowDown, faArrowUp } from '@fortawesome/free-solid-svg-icons';
 import { Card } from 'src/app/card';
 import { FetchService } from 'src/app/services/fetch.service';

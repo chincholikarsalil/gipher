@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { faSearch, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FetchService } from '../services/fetch.service';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-header',
@@ -19,7 +19,9 @@ export class HeaderComponent implements OnInit {
 
   faUser = faUser;
 
-  constructor(private fetchService: FetchService, private router: Router) { }
+  show: boolean = false;
+
+  constructor(private fetchService: FetchService, public loginService: LoginService) { }
 
   ngOnInit(): void {
     this.currentPage = window.location.href.split('/')[window.location.href.split('/').length - 1];
@@ -28,10 +30,11 @@ export class HeaderComponent implements OnInit {
   search() {
     this.fetchService.searchQuery = this.searchQuery;
     this.fetchService.searchType = this.searchType;
-    if(this.searchType == 'gif')
+    if(this.searchType == 'gif') {
       this.fetchService.fetchSearchedGifs();
-    else
+    } else {
       this.fetchService.fetchSearchedStickers();
+    }
   }
 
 }

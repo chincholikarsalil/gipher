@@ -8,7 +8,7 @@ import { ContentComponent } from './content/content.component';
 import { SearchComponent } from './content/search/search.component';
 import { RecommendationComponent } from './content/recommendation/recommendation.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { TrendingComponent } from './content/trending/trending.component';
 import { CardComponent } from './content/card/card.component';
@@ -48,7 +48,8 @@ import { FavoritesComponent } from './content/favorites/favorites.component';
     AppRoutingModule,
     FontAwesomeModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

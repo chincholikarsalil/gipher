@@ -22,6 +22,7 @@ import { RegistrationComponent } from './content/registration/registration.compo
 import { ProfileSettingsComponent } from './content/profile/profile-settings/profile-settings.component';
 import { DashboardComponent } from './content/dashboard/dashboard.component';
 import { FavoritesComponent } from './content/favorites/favorites.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { FavoritesComponent } from './content/favorites/favorites.component';
     FontAwesomeModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

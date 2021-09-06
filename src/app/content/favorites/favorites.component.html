@@ -2,5 +2,14 @@
   <hr>
   <h3>Favorites</h3>
   <br>
-  <app-card [cardArray]="this.favoriteService.favoriteArray"></app-card>
+  <div class="row content-row">
+    <app-card
+      [cardArray]="this.favoriteService.favoriteArray | paginate:{id: 'favorite-paginate', itemsPerPage:12, currentPage:p}">
+    </app-card>
+  </div>
+  <br>
+  <div class="d-flex">
+    <pagination-controls id="favorite-paginate" class="paginate mx-auto my-pagination" (pageChange)="p=$event">
+    </pagination-controls>
+  </div>
 </div>

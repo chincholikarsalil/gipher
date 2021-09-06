@@ -10,6 +10,8 @@ import { UserInterestService } from 'src/app/services/user-interest.service';
 })
 export class FavoritesComponent implements OnInit {
 
+  p: number = 1;
+
   favoriteArray: Array<Card> = [];
 
   constructor(public favoriteService: FavoriteService, public userInterestService: UserInterestService) { }

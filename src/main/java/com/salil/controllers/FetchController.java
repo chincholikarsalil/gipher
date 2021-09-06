@@ -24,7 +24,7 @@ public class FetchController {
 	String searchGIFEndpoint = "http://api.giphy.com/v1/gifs/search";
 	String searchStickerEndpoint = "https://api.giphy.com/v1/stickers/search";
 	String trendingEndpoint = "https://api.giphy.com/v1/gifs/trending";
-	String limit = "&limit=" + 6;
+	String limit = "&limit=" + 36;
 	String tail = "&rating=g&lang=en";
 	String query = "&q=";
 	String commonPart = apiKey + limit + tail;

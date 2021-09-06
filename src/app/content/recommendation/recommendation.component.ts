@@ -8,6 +8,8 @@ import { RecommendService } from 'src/app/services/recommend.service';
 })
 export class RecommendationComponent implements OnInit {
 
+  p: number = 1;
+
   constructor(public recommendService: RecommendService) { }
 
   ngOnInit(): void {

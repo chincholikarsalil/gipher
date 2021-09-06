@@ -1,0 +1,19 @@
+#trending-paginate {
+  margin-top: 20px;
+}
+
+#preloader {
+  margin-top: 30vh;
+}
+
+.progress-bar {
+  width: 100px;
+  height: 100px;
+  background: blue;
+  animation: progress 1s;
+}
+
+@keyframes progress {
+  from {width: 0}
+  to {width: 100%}
+}

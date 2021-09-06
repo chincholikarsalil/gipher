@@ -1,5 +1,20 @@
-<div class="container col-sm-12">
+<div class="container col-md-12" id="preloader">
+  <div class="container col-md-6">
+    <div class="progress">
+      <div class="progress-bar" role="progressbar">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container col-sm-12" id="trending">
   <h3>Trending GIFs</h3>
   <br>
-  <app-card [cardArray]="this.fetchService.trendingArray"></app-card>
+  <div class="row content-row">
+    <app-card [cardArray]="this. fetchService.trendingArray | paginate:{id: 'trending-paginate', itemsPerPage:12, currentPage:p}"></app-card>
+  </div>
+  <br>
+  <div class="d-flex">
+    <pagination-controls id="trending-paginate" class="paginate mx-auto my-pagination"
+      (pageChange)="p=$event"></pagination-controls>
+  </div>
 </div>

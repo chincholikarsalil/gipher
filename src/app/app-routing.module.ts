@@ -8,7 +8,6 @@ import { ProfileComponent } from './content/profile/profile.component';
 import { RegistrationComponent } from './content/registration/registration.component';
 import { ProfileSettingsComponent } from './content/profile/profile-settings/profile-settings.component';
 import { DashboardComponent } from './content/dashboard/dashboard.component';
-import { SearchComponent } from './content/search/search.component';
 
 const routes: Routes = [
   {

@@ -21,13 +21,11 @@
 }
 
 .counter {
-  width: 28px;
-  height: 28px;
   background-color: olivedrab;
   color: #282828;
   font-weight: bold;
   border-radius: 100%;
-  border: 0px;
+  border-color: #121212;
 }
 
 .card-footer {

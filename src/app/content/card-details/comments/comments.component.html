@@ -28,9 +28,14 @@
               <fa-icon [icon]="faUser" transform="grow-2"></fa-icon>
             </button>
           </div>
-          <div class="col-sm-9 mt-1 ml-1">
+          <div class="col-sm-8 mt-1 ml-1">
             <a id="username">@{{ cmnt.username }}</a>
             <a id="user-comment">&nbsp;:&nbsp;{{ cmnt.comment }}</a>
+          </div>
+          <div class="col-sm-1">
+            <button class="text counter" disabled>
+              {{ cmnt.likes }}
+            </button>
           </div>
           <div class="col-sm-1" *ngIf="isLoggedIn() && !this.userLikedComments.includes(cmnt.commentId)">
             <button class="btn btn-outline-info" (click)="likeComment(cmnt.commentId)">

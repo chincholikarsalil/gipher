@@ -51,6 +51,14 @@ export class FetchService {
           for(let card of data) {
             cardArray.push(new Card(card.id, card.title, card.imgUrl));
           }
+          if(this.searchQuery.length > 0) {
+            window.sessionStorage.setItem("query", this.searchQuery);
+            window.sessionStorage.setItem(this.searchQuery, JSON.stringify(cardArray));
+            if(window.location.href.split('/')[window.location.href.split('/').length - 1] != 'dashboard')
+              window.location.href = '/dashboard';
+            else
+              window.location.reload();
+          }
         }
       }
     );
@@ -61,10 +69,14 @@ export class FetchService {
   }
 
   fetchSearchedGifs() {
+    if(window.sessionStorage.getItem("query"))
+      window.sessionStorage.removeItem(window.sessionStorage.getItem("query")!.toString());
     this.fetch(this.searchedGifs, this.searchArray);
   }
 
   fetchSearchedStickers() {
+    if(window.sessionStorage.getItem("query"))
+      window.sessionStorage.removeItem(window.sessionStorage.getItem("query")!.toString());
     this.fetch(this.searchedStickers, this.searchArray);
   }
 

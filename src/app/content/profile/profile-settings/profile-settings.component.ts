@@ -35,10 +35,7 @@ export class ProfileSettingsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  }
-
-  editProfile() {
-    window.location.href = "http://localhost:4200/profile/settings";
+    window.sessionStorage.removeItem(window.sessionStorage.getItem("query")!.toString());
   }
 
   deleteUser() {
@@ -85,11 +82,12 @@ export class ProfileSettingsComponent implements OnInit {
 
   submit() {
     console.log(this.imageUpload.value);
-    this.http.post('http://localhost:8001/upload.php', this.imageUpload.value)
-      .subscribe(res => {
+    this.http.post('http://localhost:8001/upload.php', this.imageUpload.value).subscribe(
+      res => {
         console.log(res);
         alert('Uploaded Successfully.');
-      })
+      }
+    );
   }
 
 }

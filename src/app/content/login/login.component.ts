@@ -15,9 +15,9 @@ export class LoginComponent implements OnInit {
   constructor(public loginService: LoginService) { }
 
   ngOnInit() {
-    document.getElementById('login-form')!.style.display = 'none';
+    document.getElementById('loginform')!.style.display = 'none';
     setTimeout(() => { document.getElementById('preloader')!.style.display = 'none'; }, 500);
-    setTimeout(() => { document.getElementById('login-form')!.style.display = 'block'; }, 500);
+    setTimeout(() => { document.getElementById('loginform')!.style.display = 'block'; }, 500);
 
     this.username = new FormControl('', Validators.required);
     this.password = new FormControl('', [Validators.required, Validators.minLength(5)]);

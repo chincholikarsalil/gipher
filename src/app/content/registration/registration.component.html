@@ -8,7 +8,7 @@
           <input id="name" type="text" [formControl]="name" class="form-control" placeholder="Name" />
           <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="alert alert-danger">
             <div class="name" *ngIf="name.errors?.required">
-              Username is required
+              Name is required
             </div>
             <div class="name" *ngIf="name.errors?.minlength">
               Name must be at least 5 characters long

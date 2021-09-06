@@ -27,6 +27,7 @@ export class CommentService {
         if (data) {
           this.userComment.cardId = data.cardId;
           this.userComment.comments = data.comments;
+          this.userComment.comments.sort((c1, c2) => c2.likes - c1.likes);
         }
       }
     );

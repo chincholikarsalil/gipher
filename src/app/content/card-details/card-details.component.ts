@@ -36,9 +36,7 @@ export class CardDetailsComponent implements OnInit {
   load() {
     this.fetchService.searchId = window.location.href.split('/')[window.location.href.split('/').length - 1];
     this.fetchService.searchById.subscribe(
-      data => {
-        this.card = new Card(data.id, data.title, data.imgUrl);
-      },
+      data => this.card = new Card(data!.id, data!.title, data!.imgUrl),
       error => {
         console.log(error.message);
         this.router.navigateByUrl("/page-not-found");

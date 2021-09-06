@@ -1,1 +1,104 @@
-<p>profile-settings works!</p>
+<div class="container p-3 profile flex-center">
+  <div class="container">
+    <h1>Profile</h1>
+    <br>
+    <div class="container card-footer">
+      <form method="post">
+        <div class="row p-2">
+          <div class="col-sm-2">
+            <form [formGroup]="imageUpload">
+              <div class="row">
+                <div class="col-sm-9">
+                  <div class="col-sm-12">
+                    <label for="picture"></label>
+                    <input type="file" id="picture" accept="image/*" class="btn w-100 form-control"
+                      (change)="onFileChange($event)" />
+                    <div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger">
+                      <div *ngIf="f.file.errors && f.file.errors.required">File is required.</div>
+                    </div>
+                  </div>
+                  <div class="col-sm-12">
+                    <button class="btn btn-secondary w-100" type="submit" (click)="submit()">Upload</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col-sm-8">
+            <div class="row">
+              <div class="profile-head col-sm-4">
+                <div class="profile-head">
+                  <img [src]="imageSrc" style="height: 100px; width: 100px" id="profile-pic">
+                </div>
+              </div>
+              <div class="profile-head col-sm-8">
+                <h5>{{ name }}</h5>
+                <h6>{{ username }}</h6>
+                <h6>{{ email }}</h6>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2 editProfile">
+            <button type="button" class="btn btn-danger" (click)="deleteUser()">Delete Profile</button>
+          </div>
+        </div>
+        <hr>
+        <div class="row mt-4">
+          <div class="row">
+            <div class="col-sm-6">
+              <table class="table table-striped">
+                <tbody>
+                  <tr>
+                    <th scope="row">Name:</th>
+                    <td><input id="name" type="text" [(ngModel)]="editName" class="form-control" placeholder="Name" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Phone:</th>
+                    <td><input id="name" type="tel" [(ngModel)]="editPhone" class="form-control" placeholder="Phone" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">DOB:</th>
+                    <td><input id="name" type="date" [(ngModel)]="editDob" class="form-control" /></td>
+                  </tr>
+                  <tr>
+                    <th scope="row" colspan="2">
+                      <input id="name" type="submit" class="container form-control btn-success w-50" />
+                    </th>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-5">
+              <table class="table table-striped">
+                <tbody>
+                  <tr>
+                    <th scope="row">Current Password:</th>
+                    <td><input id="name" type="password" [(ngModel)]="editName" class="form-control" placeholder="Password" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">New Password:</th>
+                    <td><input id="name" type="password" [(ngModel)]="editPhone" class="form-control" placeholder="New Password" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Confirm Password:</th>
+                    <td><input id="name" type="password" [(ngModel)]="editDob" class="form-control" placeholder="Confirm Password" /></td>
+                  </tr>
+                  <tr>
+                    <th scope="row" colspan="2">
+                      <input id="name" type="submit" class="container form-control btn-success w-50" />
+                    </th>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

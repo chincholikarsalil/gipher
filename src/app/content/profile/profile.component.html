@@ -1,37 +1,18 @@
-<div class="container p-3 emp-profile flex-center">
+<div class="container p-3 profile flex-center">
   <div class="container">
     <h1>Profile</h1>
     <br>
     <div class="container card-footer">
-      <form method="post">
+      <form>
         <div class="row p-2">
-          <div class="col-sm-2">
-            <form [formGroup]="imageUpload">
-              <div class="row">
-                <div class="col-sm-9">
-                  <div class="col-sm-12">
-                    <label for="picture"></label>
-                    <input type="file" id="picture" accept="image/*" class="btn btn-dark w-100 form-control"
-                      (change)="onFileChange($event)" />
-                    <div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger">
-                      <div *ngIf="f.file.errors && f.file.errors.required">File is required.</div>
-                    </div>
-                  </div>
-                  <div class="col-sm-12">
-                    <button class="btn btn-dark w-100" type="submit" (click)="submit()">Upload</button>
-                  </div>
-                </div>
-              </div>
-            </form>
-          </div>
-          <div class="col-sm-7">
+          <div class="col-sm-9">
             <div class="row">
-              <div class="profile-head col-sm-4">
+              <div class="profile-head col-sm-3">
                 <div class="profile-head">
-                  <img [src]="imageSrc" *ngIf="imageSrc" style="height: 100px; width: 100px">
+                  <img [src]="imageSrc" style="height: 100px; width: 100px" id="profile-pic">
                 </div>
               </div>
-              <div class="profile-head col-sm-8">
+              <div class="profile-header col-sm-9">
                 <h5>{{ name }}</h5>
                 <h6>{{ username }}</h6>
                 <h6>{{ email }}</h6>
@@ -39,13 +20,13 @@
             </div>
           </div>
           <div class="col-sm-3 editProfile">
-            <button type="button" class="btn btn-dark w-48 editButton" (click)="editProfile()">Edit Profile</button>
+            <button type="button" class="btn btn-secondary w-48 editButton" (click)="editProfile()">Edit Profile</button>
             <button type="button" class="btn btn-danger w-48" (click)="deleteUser()">Delete Profile</button>
           </div>
         </div>
         <hr>
         <div class="row mt-4">
-          <div class="container col-sm-8">
+          <div class="container col-sm-8 p-2">
             <div class="row">
               <table class="table table-striped">
                 <tbody>

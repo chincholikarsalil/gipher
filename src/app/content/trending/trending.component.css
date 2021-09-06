@@ -17,3 +17,8 @@
   from {width: 0}
   to {width: 100%}
 }
+
+#trending {
+  color: white;
+  font-weight: bold;
+}

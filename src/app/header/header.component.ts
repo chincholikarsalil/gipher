@@ -18,6 +18,7 @@ export class HeaderComponent implements OnInit {
   currentPage!: string;
 
   faUser = faUser;
+  username = sessionStorage.getItem("username");
 
   show: boolean = false;
 

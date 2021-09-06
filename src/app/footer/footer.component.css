@@ -3,6 +3,14 @@
   border-radius: 10px;
 }
 
-.copyrights {
-  background-color: rgba(0, 0, 0, 0.2);
+#copyrights {
+  background-color: black;
+  opacity: 95%;
+  font-weight: bold;
+}
+
+footer {
+  background-color: #121212;
+  opacity: 99%;
+  font-weight: bold;
 }

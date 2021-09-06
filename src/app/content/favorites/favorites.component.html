@@ -1,6 +1,6 @@
-<div class="container col-sm-12" *ngIf="this.recommendService.recommendedArray.length > 0">
+<div class="container col-sm-12" *ngIf="this.favoriteService.favoriteArray.length > 0">
   <hr>
   <h3>Favorites</h3>
   <br>
-  <app-card [cardArray]="this.recommendService.recommendedArray"></app-card>
+  <app-card [cardArray]="this.favoriteService.favoriteArray"></app-card>
 </div>

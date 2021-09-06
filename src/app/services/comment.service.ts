@@ -39,7 +39,8 @@ export class CommentService {
 
       this.commentDetails = new CommentDetails();
       this.commentDetails.comment = this.comment;
-      this.commentDetails.commentId = "salil" + Math.random().toString();
+      this.commentDetails.username = sessionStorage!.getItem("username")!.toString();
+      this.commentDetails.commentId = this.commentDetails.username + Math.random().toString();
 
       userComment.comments.push(this.commentDetails)
 

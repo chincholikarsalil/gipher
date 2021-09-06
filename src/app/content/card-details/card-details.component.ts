@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { faArrowDown, faArrowUp, faHeart, faHeartBroken } from '@fortawesome/free-solid-svg-icons';
+import { FavoriteService } from 'src/app/services/favorite.service';
 import { Card } from '../../card';
 import { FetchService } from '../../services/fetch.service';
 import { RecommendService } from '../../services/recommend.service';
@@ -21,7 +22,8 @@ export class CardDetailsComponent implements OnInit {
 
   constructor(public recommendService: RecommendService,
     private fetchService: FetchService,
-      private router: Router) {
+      private router: Router,
+        public favoriteService: FavoriteService) {
         this.load();
       }
 

@@ -27,11 +27,12 @@
                   <fa-icon [icon]="faUser"></fa-icon>
                 </a>
                 <ul class="dropdown dropdown-menu" [ngClass]="{show: show === true}">
-                  <li *ngIf="currentPage != 'profile'"><a class="dropdown-item" href="profile">Profile</a></li>
-                  <li *ngIf="currentPage != 'settings'"><a class="dropdown-item" href="profile/settings">Settings</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li *ngIf="!this.loginService.isLoggedIn()" (click)="this.loginService.login()"><a class="dropdown-item" href="login">Login</a></li>
-                  <li *ngIf="this.loginService.isLoggedIn()" (click)="this.loginService.logout()"><a class="dropdown-item" href="logout">Logout</a></li>
+                  <li *ngIf="currentPage != 'profile' && this.loginService.isLoggedIn()"><a class="dropdown-item" href="profile">Profile</a></li>
+                  <li *ngIf="currentPage != 'settings' && this.loginService.isLoggedIn()"><a class="dropdown-item" href="profile/settings">Settings</a></li>
+                  <li *ngIf="this.loginService.isLoggedIn()"><hr class="dropdown-divider"></li>
+                  <li *ngIf="!this.loginService.isLoggedIn()"><a class="dropdown-item" href="login">Login</a></li>
+                  <li *ngIf="!this.loginService.isLoggedIn()"><a class="dropdown-item" href="register">Register</a></li>
+                  <li *ngIf="this.loginService.isLoggedIn()" (click)="this.loginService.logout()"><a class="dropdown-item" href="login">Logout</a></li>
                 </ul>
               </li>
             </ul>

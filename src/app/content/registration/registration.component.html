@@ -1,54 +1,59 @@
 <div class="container">
   <div class="d-flex justify-content-center align-items-center vh-100">
-    <!-- Content -->
     <div class="container flex-center ">
       <h1> Register </h1>
       <br>
       <form [formGroup]="registrationForm" (ngSubmit)="registerSubmit()">
-        <!-- User Email -->
         <div class="form-group">
-          <input id="email" type="email" [formControl]="emailId" class="form-cotrol" class="form-control"
-            placeholder="Email" />
-          <div *ngIf="emailId?.invalid && (emailId?.dirty || emailId?.touched)" class="alert alert-danger">
-            <div *ngIf="emailId.errors?.required">
-              Email required
+          <input id="name" type="text" [formControl]="name" class="form-control" placeholder="Name" />
+          <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="alert alert-danger">
+            <div class="name" *ngIf="name.errors?.required">
+              Username is required
             </div>
-            <div *ngIf="emailId.errors?.email">
-              Enter a valid email
+            <div class="name" *ngIf="name.errors?.minlength">
+              Name must be at least 5 characters long
             </div>
           </div>
         </div>
         <br>
-        <!-- User Name -->
         <div class="form-group">
-          <input id="username" type="text" [formControl]="userName" class="form-control" placeholder="User Name" />
-          <div *ngIf="userName?.invalid && (userName?.dirty || userName?.touched)" class="alert alert-danger">
-            <div class="userName" *ngIf="userName.errors?.required">
-              Name is required.
+          <input id="email" type="email" [formControl]="email" class="form-control" placeholder="Email" />
+          <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="alert alert-danger">
+            Enter a valid email
+          </div>
+        </div>
+        <br>
+        <div class="form-group">
+          <input id="username" type="text" [formControl]="username" class="form-control" placeholder="Username" />
+          <div *ngIf="username?.invalid && (username?.dirty || username?.touched)" class="alert alert-danger">
+            <div class="username" *ngIf="username.errors?.required">
+              Username is required
             </div>
-            <div class="userName" *ngIf="userName.errors?.minlength">
-              Name must be at least 5 characters long.
+            <div class="username" *ngIf="username.errors?.minlength">
+              Name must be at least 5 characters long
             </div>
           </div>
         </div>
         <br>
-        <!-- DOB -->
         <div class="form-group">
-          <input id="dob" type="date" [formControl]="date" class="form-control" />
-          <div *ngIf="date?.invalid && (date?.dirty || date?.touched)" class="alert alert-danger">
-            <div *ngIf="date.errors?.required">
+          <input id="dob" type="date" min="1960-01-01" max="2006-12-31" [formControl]="dob" class="form-control" />
+          <div *ngIf="dob?.invalid && (dob?.dirty || dob?.touched)" class="alert alert-danger">
+            <div *ngIf="dob.errors?.required">
               Date of Birth is required.
             </div>
           </div>
         </div>
         <br>
         <div class="form-group">
-          <input id="mobile-number" input type="text" [formControl]="mobileNumber" class="form-control"
-            placeholder=" Mobile Number" />
+          <input id="mobile-number" type="tel" [formControl]="mobileNumber" class="form-control"
+            placeholder="Mobile Number" />
           <div class="mobileNumber" *ngIf="mobileNumber?.invalid && (mobileNumber?.dirty || mobileNumber?.touched)"
             class="alert alert-danger">
             <div *ngIf="mobileNumber.errors?.required">
-              Mobile number is required.
+              Mobile number is required
+            </div>
+            <div *ngIf="mobileNumber?.errors || (mobileNumber.errors?.minlength || mobileNumber.errors?.maxLength)">
+              Mobile number should be 10 digit long
             </div>
           </div>
         </div>
@@ -57,10 +62,10 @@
           <input id="password" type="password" [formControl]="password" class="form-control" placeholder="Password" />
           <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="alert alert-danger">
             <div class="password" *ngIf="password.errors?.required">
-              Password is required.
+              Password is required
             </div>
             <div class="password" *ngIf="password.errors?.minlength">
-              Password must be at least 5 characters long.
+              Password must be at least 5 characters long
             </div>
           </div>
         </div>
@@ -71,19 +76,18 @@
           <div *ngIf="confirmPassword?.invalid && (confirmPassword?.dirty || confirmPassword?.touched)"
             class="alert alert-danger">
             <div class="password" *ngIf="confirmPassword.errors?.required">
-              Password is required.
+              Confirm password required
             </div>
             <div class="password" *ngIf="confirmPassword.errors?.minlength">
-              Password must be at least 5 characters long.
+              Password must be at least 5 characters long
             </div>
           </div>
-          <div *ngIf="confirmPassword.value.length > 5 && confirmPassword != password" class="alert alert-danger">
+          <div class="alert alert-danger" *ngIf="confirmPassword.value.length >= 5 && confirmPassword.value != password.value">
             Passwords don't match
           </div>
         </div>
         <br>
-        <!-- Submit Button -->
-        <button mat-flat-button type="submit" [disabled]="!registrationForm?.valid"
+        <button mat-flat-button type="submit" [disabled]="!registrationForm?.valid || confirmPassword.value != password.value"
           class="btn btn-success">Submit</button>
       </form>
     </div>

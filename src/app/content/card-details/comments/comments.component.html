@@ -30,19 +30,19 @@
             </button>
           </div>
           <div class="col-sm-9 mt-1 ml-1">
-            <a>{{ cmnt.comment }}</a>
+            <a>@{{ cmnt.username }}: {{ cmnt.comment }}</a>
           </div>
-          <div class="col-sm-1" *ngIf="isLoggedIn()">
+          <div class="col-sm-1" *ngIf="isLoggedIn() && !this.userLikedComments.includes(cmnt.commentId)">
             <button class="btn btn-outline-info" (click)="likeComment(cmnt.commentId)">
               <fa-icon [icon]="faLike" transform="shrink-2"></fa-icon>
             </button>
           </div>
-          <div class="col-sm-1" *ngIf="!isLoggedIn()">
+          <div class="col-sm-1" *ngIf="isLoggedIn() && this.userLikedComments.includes(cmnt.commentId)">
             <button class="btn btn-outline-dark" (click)="dislikeComment(cmnt.commentId)">
               <fa-icon [icon]="faDislike" transform="shrink-2"></fa-icon>
             </button>
           </div>
-          <div class="col-sm-1" *ngIf="isLoggedIn()">
+          <div class="col-sm-1" *ngIf="isLoggedIn() && username == cmnt.username">
             <button class="btn btn-outline-danger" (click)="deleteComment(cmnt.commentId)">
               <fa-icon [icon]="faDelete" transform="shrink-2"></fa-icon>
             </button>

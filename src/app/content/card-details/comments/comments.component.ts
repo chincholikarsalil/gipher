@@ -3,6 +3,7 @@ import { faThumbsDown, faThumbsUp, faTrash, faUser } from '@fortawesome/free-sol
 import { Comment } from 'src/app/comment';
 import { CommentService } from 'src/app/services/comment.service';
 import { LoginService } from 'src/app/services/login.service';
+import { UserInterestService } from 'src/app/services/user-interest.service';
 
 @Component({
   selector: 'app-comments',
@@ -14,21 +15,26 @@ export class CommentsComponent implements OnInit {
   @Input()
   cardId!: string;
   comment: string = '';
+  username: string = sessionStorage.getItem("username")?.toString() || "";
 
   userComment: Comment = new Comment();
+  userLikedComments: Array<string> = []
 
   faDelete = faTrash;
   faUser = faUser;
   faLike = faThumbsUp;
   faDislike = faThumbsDown;
 
-  constructor(private commentService: CommentService, private loginService: LoginService) {
+  constructor(private commentService: CommentService, private loginService: LoginService, private userInterestService: UserInterestService) {
   }
 
   ngOnInit(): void {
     this.commentService.cardId = this.cardId;
     this.commentService.fetchComments();
+    this.userInterestService.fetchLikedComments();
     this.userComment = this.commentService.userComment;
+    this.userLikedComments = this.userInterestService.userLikedComments;
+    console.log(this.userInterestService.userLikedComments);
   }
 
   addComment() {
@@ -45,16 +51,16 @@ export class CommentsComponent implements OnInit {
   }
 
   likeComment(commentId: string) {
-    console.log(commentId);
     this.commentService.cardId = this.cardId;
     this.commentService.likeComment(commentId);
+    this.userInterestService.likeComment(commentId);
     window.location.reload();
   }
 
   dislikeComment(commentId: string) {
-    console.log(commentId);
     this.commentService.cardId = this.cardId;
     this.commentService.dislikeComment(commentId);
+    this.userInterestService.dislikeComment(commentId);
     window.location.reload();
   }
 

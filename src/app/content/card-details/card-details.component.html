@@ -35,17 +35,16 @@
           </div>
         </div>
       </div>
-      <!-- Favorite section, yet to update -->
       <div class="col-sm-1">
         <div class="row">
-          <div class="col-sm-2" *ngIf="!recommendService.isRecommended(card)">
-            <button class="btn btn-outline-warning icon recommend" (click)="recommendService.recommend(card)">
+          <div class="col-sm-2" *ngIf="!favoriteService.isFavorite(card)">
+            <button class="btn btn-outline-warning icon recommend" (click)="favoriteService.favorite(card)">
               <fa-icon [icon]="faFavorite" transform="shrink-2">
               </fa-icon>
             </button>
           </div>
-          <div class="col-sm-2" *ngIf="recommendService.isRecommended(card)">
-            <button class="btn btn-outline-danger icon unrecommend" (click)="recommendService.unrecommend(card)">
+          <div class="col-sm-2" *ngIf="favoriteService.isFavorite(card)">
+            <button class="btn btn-outline-danger icon unrecommend" (click)="favoriteService.unfavorite(card)">
               <fa-icon [icon]="faUnfavorite" transform="shrink-2">
               </fa-icon>
             </button>

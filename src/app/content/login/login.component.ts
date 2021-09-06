@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -7,26 +8,28 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  loginform!: FormGroup;
+  loginForm!: FormGroup;
+  username!: FormControl;
   password!: FormControl;
-  email!: FormControl;
 
-  constructor() { }
+  constructor(public loginService: LoginService) { }
 
   ngOnInit() {
-    this.password = new FormControl('', [Validators.required, Validators.minLength(5)]),
-      this.email = new FormControl('', [Validators.required, Validators.email, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]),
+    document.getElementById('login-form')!.style.display = 'none';
+    setTimeout(() => { document.getElementById('preloader')!.style.display = 'none'; }, 500);
+    setTimeout(() => { document.getElementById('login-form')!.style.display = 'block'; }, 500);
 
-      this.loginform = new FormGroup({
-        password: this.password,
-        email: this.email,
-      });
+    this.username = new FormControl('', Validators.required);
+    this.password = new FormControl('', [Validators.required, Validators.minLength(5)]);
+
+    this.loginForm = new FormGroup({
+      username: this.username,
+      password: this.password
+    });
 
   }
 
   loginSubmit() {
-    console.log(this.loginform.value);
-    //var email = this.loginform.get("email")?.value;
-    //var password = this.loginform.get("password").value;
+    this.loginService.login(this.username.value, this.loginForm.value);
   }
 }

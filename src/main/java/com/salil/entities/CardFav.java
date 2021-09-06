@@ -3,20 +3,20 @@ package com.salil.entities;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "recommended")
-public class Card {
+@Document(collection = "favorites")
+public class CardFav {
 
 	@Id
 	private String id;
 	private String title;
 	private String imgUrl;
-	private int recommendCount;
+	private int favoriteCount;
 
-	public Card(String id, String title, String imgUrl) {
+	public CardFav(String id, String title, String imgUrl) {
 		this.id = id;
 		this.title = title;
 		this.imgUrl = imgUrl;
-		this.recommendCount = 0;
+		this.favoriteCount = 0;
 	}
 
 	public String getId() {
@@ -43,16 +43,16 @@ public class Card {
 		this.imgUrl = imgUrl;
 	}
 
-	public int getRecommendCount() {
-		return recommendCount;
+	public int getFavoriteCount() {
+		return favoriteCount;
 	}
 
 	public void increment() {
-		this.recommendCount += 1;
+		this.favoriteCount += 1;
 	}
 	
 	public void decrement() {
-		this.recommendCount -= 1;
+		this.favoriteCount -= 1;
 	}
 
 }

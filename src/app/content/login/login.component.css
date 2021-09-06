@@ -27,3 +27,23 @@ form{
   padding: 40px;
   text-align: center;
 }
+
+.comments {
+  text-align: center;
+}
+
+#preloader {
+  margin-top: 30vh;
+}
+
+.progress-bar {
+  width: 100px;
+  height: 100px;
+  background: blue;
+  animation: progress 1s;
+}
+  
+@keyframes progress {
+  from {width: 0}
+  to {width: 100%}
+}

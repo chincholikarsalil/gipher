@@ -11,6 +11,8 @@ export class RecommendationComponent implements OnInit {
   constructor(public recommendService: RecommendService) { }
 
   ngOnInit(): void {
+    if(!sessionStorage.getItem("username"))
+      window.location.href = "/login";
     this.recommendService.updateRecommendedArray();
   }
 

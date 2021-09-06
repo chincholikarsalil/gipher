@@ -6,6 +6,7 @@ export class Comment {
 }
 
 export class CommentDetails {
+    username!: string;
     commentId!: string;
     comment!: string;
     likes!: number;
@@ -17,7 +18,7 @@ export class CommentDetails {
 
 export class TweakComment {
     cardId!: string;
-    comments!: string
+    comments!: string;
 
     constructor() { }
 }

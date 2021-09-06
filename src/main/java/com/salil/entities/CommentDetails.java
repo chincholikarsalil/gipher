@@ -2,6 +2,7 @@ package com.salil.entities;
 
 public class CommentDetails {
 	String commentId;
+	String username;
 	String comment;
 	int likes;
 	
@@ -15,6 +16,14 @@ public class CommentDetails {
 
 	public void setCommentId(String commentId) {
 		this.commentId = commentId;
+	}
+	
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getComment() {

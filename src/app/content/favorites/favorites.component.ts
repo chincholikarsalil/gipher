@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { RecommendService } from 'src/app/services/recommend.service';
+import { Card } from 'src/app/card';
+import { FavoriteService } from 'src/app/services/favorite.service';
+import { UserInterestService } from 'src/app/services/user-interest.service';
 
 @Component({
   selector: 'app-favorites',
@@ -8,10 +10,11 @@ import { RecommendService } from 'src/app/services/recommend.service';
 })
 export class FavoritesComponent implements OnInit {
 
-  constructor(public recommendService: RecommendService) { }
+  favoriteArray: Array<Card> = [];
+
+  constructor(public favoriteService: FavoriteService, public userInterestService: UserInterestService) { }
 
   ngOnInit(): void {
-    this.recommendService.updateRecommendedArray();
   }
 
 }

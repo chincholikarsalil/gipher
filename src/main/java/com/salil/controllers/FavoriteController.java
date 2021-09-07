@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,13 +26,10 @@ public class FavoriteController {
 	CardFav card;
 	UserInterest userInterest;
 	List<CardFav> cardArray = new ArrayList<CardFav>();
+	@Autowired
 	FavoriteRepository repository;
+	@Autowired
 	UserInterestRepository userInterestRepository;
-
-	public FavoriteController(FavoriteRepository repository, UserInterestRepository userInterestRepository) {
-		this.repository = repository;
-		this.userInterestRepository = userInterestRepository;
-	}
 
 	@GetMapping("/favorite/all-cards")
 	public List<CardFav> cards() {

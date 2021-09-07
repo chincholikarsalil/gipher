@@ -7,22 +7,6 @@ form{
   text-align: left;
 }
 
-.editProfile {
-  text-align: end;
-}
-
-.labels {
-  font-weight: 500;
-}
-
-.editButton {
-  margin-right: 2px;
-}
-
-.card-footer {
-  border: none;
-}
-
 .profile {
   color: white;
 }
@@ -30,24 +14,22 @@ form{
 .card-footer {
   background-color: #282828;
   border-radius: 10px;
-}
-
-th, td {
-  color: white;
   border: none;
-  padding: 20px;
-}
-
-table {
-  outline: 2px solid #121212;
-}
-
-.table-striped > tbody > tr:nth-child(2n+1) > td, 
-.table-striped > tbody > tr:nth-child(2n+1) > th {
-  background-color: #121212;
 }
 
 #profile-pic {
   padding: 2px;
   background-color: #121212;
+}
+
+.editProfile {
+  text-align: end;
+}
+
+.alert { 
+  margin-top: 5px;
+  padding: 5px;
+  border-radius: 0px;
+  color: black;
+  background-color:whitesmoke;
 }

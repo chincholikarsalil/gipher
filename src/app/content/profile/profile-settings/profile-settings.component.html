@@ -46,55 +46,11 @@
         <div class="row mt-4">
           <div class="row">
             <div class="col-sm-6">
-              <table class="table table-striped">
-                <tbody>
-                  <tr>
-                    <th scope="row">Name:</th>
-                    <td><input id="name" type="text" [(ngModel)]="editName" class="form-control" placeholder="Name" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Phone:</th>
-                    <td><input id="name" type="tel" [(ngModel)]="editPhone" class="form-control" placeholder="Phone" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">DOB:</th>
-                    <td><input id="name" type="date" [(ngModel)]="editDob" class="form-control" /></td>
-                  </tr>
-                  <tr>
-                    <th scope="row" colspan="2">
-                      <input id="name" type="submit" class="container form-control btn-success w-50" />
-                    </th>
-                  </tr>
-                </tbody>
-              </table>
+              <app-update-details></app-update-details>
             </div>
             <div class="col-sm-1"></div>
             <div class="col-sm-5">
-              <table class="table table-striped">
-                <tbody>
-                  <tr>
-                    <th scope="row">Current Password:</th>
-                    <td><input id="name" type="password" [(ngModel)]="editName" class="form-control" placeholder="Password" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">New Password:</th>
-                    <td><input id="name" type="password" [(ngModel)]="editPhone" class="form-control" placeholder="New Password" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Confirm Password:</th>
-                    <td><input id="name" type="password" [(ngModel)]="editDob" class="form-control" placeholder="Confirm Password" /></td>
-                  </tr>
-                  <tr>
-                    <th scope="row" colspan="2">
-                      <input id="name" type="submit" class="container form-control btn-success w-50" />
-                    </th>
-                  </tr>
-                </tbody>
-              </table>
+              <app-update-password></app-update-password>
             </div>
           </div>
         </div>

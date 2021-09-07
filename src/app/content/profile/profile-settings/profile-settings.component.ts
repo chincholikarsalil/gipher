@@ -21,12 +21,6 @@ export class ProfileSettingsComponent implements OnInit {
   email = sessionStorage.getItem("email");
   mobileNumber = "+91" + sessionStorage.getItem("mobileNumber");
   dob = sessionStorage.getItem("dob");
-  joinedOn = sessionStorage.getItem("joinedOn");
-
-  editName = '';
-  editPhone = '';
-  editDob = '';
-  editEmail = '';
 
   constructor(private http: HttpClient, private loginService: LoginService) {
     if (!this.loginService.isLoggedIn()) {

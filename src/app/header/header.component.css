@@ -21,8 +21,9 @@
 }
 
 .logout {
-  color: #FF0000;
+  color: white;
   font-weight: bold;
+  background-color: #e73e3ee7;
 }
 
 .dropdown-menu {
@@ -34,4 +35,9 @@ input[type="text"],
 select,
 option {
   font-weight: bold;
+}
+
+#username {
+  font-weight: bold;
+  color: olivedrab;
 }

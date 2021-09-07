@@ -47,7 +47,7 @@
           <input id="dob" type="date" min="1960-01-01" max="2006-12-31" [formControl]="dob" class="form-control" />
           <div *ngIf="dob?.invalid && (dob?.dirty || dob?.touched)" class="alert alert-danger">
             <div *ngIf="dob.errors?.required">
-              Date of Birth is required.
+              Date of Birth is required
             </div>
           </div>
         </div>

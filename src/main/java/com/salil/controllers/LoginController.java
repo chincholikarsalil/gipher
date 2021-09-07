@@ -1,6 +1,7 @@
 package com.salil.controllers;
 
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,11 +17,8 @@ import com.salil.repository.UserRepository;
 public class LoginController {
 
 	User user;
+	@Autowired
 	UserRepository userRepository;
-
-	public LoginController(UserRepository userRepository) {
-		this.userRepository = userRepository;
-	}
 
 	@PostMapping("/user/login")
 	public User register(@RequestBody String user) {

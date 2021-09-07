@@ -35,7 +35,7 @@ export class ProfileSettingsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    window.sessionStorage.removeItem(window.sessionStorage.getItem("query")!.toString());
+    window.localStorage.removeItem(window.localStorage.getItem("query")!.toString());
   }
 
   deleteUser() {

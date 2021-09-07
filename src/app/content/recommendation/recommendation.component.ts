@@ -16,7 +16,7 @@ export class RecommendationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    window.sessionStorage.removeItem(window.sessionStorage.getItem("query")!.toString());
+    window.localStorage.removeItem(window.localStorage.getItem("query")!.toString());
     this.recommendService.updateRecommendedArray();
   }
 

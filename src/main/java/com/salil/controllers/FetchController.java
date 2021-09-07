@@ -66,7 +66,11 @@ public class FetchController {
 		for(int i = 0; i < data.length(); i++) {
 			this.id = data.getJSONObject(i).getString("id");
 			this.title = data.getJSONObject(i).getString("title");
-			this.imgUrl = data.getJSONObject(i).getJSONObject("images").getJSONObject("downsized").getString("url");
+			try {
+				this.imgUrl = data.getJSONObject(i).getJSONObject("images").getJSONObject("downsized").getString("url");
+			} catch(Exception e ) {
+				this.imgUrl = data.getJSONObject(i).getJSONObject("images").getJSONObject("original").getString("url");
+			}
 			this.card = new Card(this.id, this.title, this.imgUrl);
 			cardList.add(card);
 		}

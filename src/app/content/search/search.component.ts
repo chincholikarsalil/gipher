@@ -21,8 +21,8 @@ export class SearchComponent implements OnInit {
   }
 
   fetch() {
-    if(window.sessionStorage.getItem("query")) {
-      let array = JSON.parse(window.sessionStorage.getItem(window.sessionStorage.getItem("query")!.toString())!.toString());
+    if(window.localStorage.getItem("query")) {
+      let array = JSON.parse(window.localStorage.getItem(window.localStorage.getItem("query")!.toString())!.toString());
       for (let i = 0; i < array.length; i++) {
         this.searchArray.push(array[i]);
       }

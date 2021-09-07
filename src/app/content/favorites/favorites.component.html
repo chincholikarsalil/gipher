@@ -1,15 +1,22 @@
-<div class="container col-sm-12" *ngIf="this.favoriteService.favoriteArray.length > 0" id="favorite-results">
-  <hr>
+<div class="container col-sm-12" id="favorite-results">
   <h3>Favorites</h3>
   <br>
-  <div class="row content-row">
-    <app-card
-      [cardArray]="this.favoriteService.favoriteArray | paginate:{id: 'favorite-paginate', itemsPerPage:12, currentPage:p}">
-    </app-card>
+  <div *ngIf="this.favoriteService.favoriteArray.length > 0;  else nofavorites">
+    <div class="row content-row">
+      <app-card
+        [cardArray]="this.favoriteService.favoriteArray | paginate:{id: 'favorite-paginate', itemsPerPage:12, currentPage:p}">
+      </app-card>
+    </div>
+    <br>
+    <div class="d-flex">
+      <pagination-controls id="favorite-paginate" class="paginate mx-auto my-pagination" (pageChange)="p=$event">
+      </pagination-controls>
+    </div>
   </div>
-  <br>
-  <div class="d-flex">
-    <pagination-controls id="favorite-paginate" class="paginate mx-auto my-pagination" (pageChange)="p=$event">
-    </pagination-controls>
-  </div>
+  <ng-template #nofavorites>
+    <div id="favorite-results" class="container col-xs-12">
+      <h5 class="text text-warning">No favorites yet</h5>
+    </div>
+  </ng-template>
+  <hr>
 </div>

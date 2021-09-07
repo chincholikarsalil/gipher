@@ -52,8 +52,8 @@ export class FetchService {
             cardArray.push(new Card(card.id, card.title, card.imgUrl));
           }
           if(this.searchQuery.length > 0) {
-            window.sessionStorage.setItem("query", this.searchQuery);
-            window.sessionStorage.setItem(this.searchQuery, JSON.stringify(cardArray));
+            window.localStorage.setItem("query", this.searchQuery);
+            window.localStorage.setItem(this.searchQuery, JSON.stringify(cardArray));
             if(window.location.href.split('/')[window.location.href.split('/').length - 1] != 'dashboard')
               window.location.href = '/dashboard';
             else
@@ -69,14 +69,14 @@ export class FetchService {
   }
 
   fetchSearchedGifs() {
-    if(window.sessionStorage.getItem("query"))
-      window.sessionStorage.removeItem(window.sessionStorage.getItem("query")!.toString());
+    if(window.localStorage.getItem("query"))
+      window.localStorage.removeItem(window.localStorage.getItem("query")!.toString());
     this.fetch(this.searchedGifs, this.searchArray);
   }
 
   fetchSearchedStickers() {
-    if(window.sessionStorage.getItem("query"))
-      window.sessionStorage.removeItem(window.sessionStorage.getItem("query")!.toString());
+    if(window.localStorage.getItem("query"))
+      window.localStorage.removeItem(window.localStorage.getItem("query")!.toString());
     this.fetch(this.searchedStickers, this.searchArray);
   }
 

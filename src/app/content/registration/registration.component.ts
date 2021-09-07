@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FetchService } from 'src/app/services/fetch.service';
 
 @Component({
   selector: 'app-registration',
@@ -19,12 +20,16 @@ export class RegistrationComponent implements OnInit {
   mobileNumber!: FormControl;
   joinedOn!: FormControl;
 
-  constructor(private http: HttpClient) { }
+  imgUrl!: string;
+
+  constructor(private http: HttpClient, private fetchService: FetchService) { }
 
   ngOnInit() {
     document.getElementById('register')!.style.display = 'none';
     setTimeout(() => { document.getElementById('preloader')!.style.display = 'none'; }, 500);
     setTimeout(() => { document.getElementById('register')!.style.display = 'block'; }, 500);
+
+    this.getRegisterGif();
 
     this.email = new FormControl('', [Validators.required, Validators.email, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$")]);
     this.username = new FormControl('', [Validators.required, Validators.minLength(5)]);
@@ -45,6 +50,15 @@ export class RegistrationComponent implements OnInit {
       joinedOn: this.joinedOn
     });
 
+  }
+
+  getRegisterGif() {
+    this.fetchService.searchId = "dXnxCd7o11CKjBBsj8";
+    this.fetchService.searchById.subscribe(
+      data => {
+        this.imgUrl = data.imgUrl
+      }
+    );
   }
 
   registerSubmit() {

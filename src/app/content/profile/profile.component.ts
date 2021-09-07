@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FetchService } from 'src/app/services/fetch.service';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -19,11 +19,13 @@ export class ProfileComponent implements OnInit {
   name = sessionStorage.getItem("name");
   username = "@" + sessionStorage.getItem("username");
   email = sessionStorage.getItem("email");
-  mobileNumber = "+91" + sessionStorage.getItem("mobileNumber");
+  mobileNumber = "+91-" + sessionStorage.getItem("mobileNumber");
   dob = sessionStorage.getItem("dob");
   joinedOn = sessionStorage.getItem("joinedOn");
 
-  constructor(private http: HttpClient, private loginService: LoginService) {
+  imgUrl!: string;
+
+  constructor(private fetchService: FetchService, private loginService: LoginService) {
     if (!this.loginService.isLoggedIn()) {
       window.location.href = "/login";
     }
@@ -33,6 +35,16 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     window.localStorage.removeItem(window.localStorage.getItem("query")!.toString());
+    this.getProfileGif();
+  }
+
+  getProfileGif() {
+    this.fetchService.searchId = "GnnJHpHmG5VEQAheZi";
+    this.fetchService.searchById.subscribe(
+      data => {
+        this.imgUrl = data.imgUrl
+      }
+    );
   }
 
   editProfile() {

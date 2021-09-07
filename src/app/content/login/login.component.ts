@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FetchService } from 'src/app/services/fetch.service';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -12,7 +13,9 @@ export class LoginComponent implements OnInit {
   username!: FormControl;
   password!: FormControl;
 
-  constructor(public loginService: LoginService) { }
+  imgUrl!: string;
+
+  constructor(public loginService: LoginService, private fetchService: FetchService) { }
 
   ngOnInit() {
     document.getElementById('loginform')!.style.display = 'none';
@@ -27,6 +30,17 @@ export class LoginComponent implements OnInit {
       password: this.password
     });
 
+    this.getLoginGif();
+
+  }
+
+  getLoginGif() {
+    this.fetchService.searchId = "zSz2KsgySmfjbb8NJS";
+    this.fetchService.searchById.subscribe(
+      data => {
+        this.imgUrl = data.imgUrl
+      }
+    );
   }
 
   loginSubmit() {

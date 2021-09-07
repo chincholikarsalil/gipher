@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FetchService } from 'src/app/services/fetch.service';
 import { LoginService } from 'src/app/services/login.service';
 import { UserPicture } from 'src/app/user';
 
@@ -17,6 +18,8 @@ export class ProfileSettingsComponent implements OnInit {
   mobileNumber = "+91" + sessionStorage.getItem("mobileNumber");
   dob = sessionStorage.getItem("dob");
 
+  imgUrl!: string;
+
   imageSrc: string = '../../favicon.ico';
   imageUpload = new FormGroup({
     username: new FormControl(this.username.slice(1)),
@@ -24,7 +27,7 @@ export class ProfileSettingsComponent implements OnInit {
     image: new FormControl('', [Validators.required])
   });
 
-  constructor(private http: HttpClient, private loginService: LoginService) {
+  constructor(private http: HttpClient, private loginService: LoginService, private fetchService: FetchService) {
     if (!this.loginService.isLoggedIn()) {
       window.location.href = "/login";
     }
@@ -34,6 +37,16 @@ export class ProfileSettingsComponent implements OnInit {
 
   ngOnInit(): void {
     window.localStorage.removeItem(window.localStorage.getItem("query")!.toString());
+    this.getEditProfileGif();
+  }
+
+  getEditProfileGif() {
+    this.fetchService.searchId = "tcEfhbX3fVUTxhbPBL";
+    this.fetchService.searchById.subscribe(
+      data => {
+        this.imgUrl = data.imgUrl
+      }
+    );
   }
 
   deleteUser() {

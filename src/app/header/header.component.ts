@@ -20,12 +20,24 @@ export class HeaderComponent implements OnInit {
   faUser = faUser;
   username = sessionStorage.getItem("username");
 
+  imgUrl!: string;
+
   show: boolean = false;
 
   constructor(private fetchService: FetchService, public loginService: LoginService) { }
 
   ngOnInit(): void {
     this.currentPage = window.location.href.split('/')[window.location.href.split('/').length - 1];
+    this.getGipherLogo()
+  }
+
+  getGipherLogo() {
+    this.fetchService.searchId = "VIWVhLsuxwBPtLYX8k";
+    this.fetchService.searchById.subscribe(
+      data => {
+        this.imgUrl = data.imgUrl
+      }
+    );
   }
 
   search() {

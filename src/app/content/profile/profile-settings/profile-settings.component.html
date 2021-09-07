@@ -1,7 +1,6 @@
 <div class="container p-3 profile flex-center">
   <div class="container">
-    <h1>Edit Profile</h1>
-    <br>
+    <h1><img src="{{ imgUrl }}" width="30%"></h1>
     <div class="container card-footer">
       <form method="post">
         <div class="row p-2">
@@ -18,7 +17,7 @@
                     </div>
                   </div>
                   <div class="col-sm-12">
-                    <button class="btn btn-secondary w-100" type="submit" (click)="submit()">Upload</button>
+                    <button class="btn btn-secondary w-100" type="submit" [disabled]="!f.name.valid" (click)="submit()">Upload</button>
                   </div>
                 </div>
               </div>

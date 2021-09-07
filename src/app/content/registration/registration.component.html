@@ -9,8 +9,7 @@
 <div class="container" id="register">
   <div class="d-flex justify-content-center align-items-center vh-100">
     <div class="container flex-center ">
-      <h1> Register </h1>
-      <br>
+      <h1><img src="{{ imgUrl }}" width="20%"></h1>
       <form [formGroup]="registrationForm" (ngSubmit)="registerSubmit()">
         <div class="form-group">
           <input id="name" type="text" [formControl]="name" class="form-control" placeholder="Name" />

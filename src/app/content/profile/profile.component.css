@@ -17,6 +17,13 @@ form{
 
 .editButton {
   margin-right: 2px;
+  background-color: #121212;
+  border: none;
+  font-weight: bold;
+}
+
+.editButton:hover {
+  background-color: black;
 }
 
 .card-footer {
@@ -33,9 +40,14 @@ form{
 }
 
 th, td {
-  color: white;
+  color: #f8f8ff;
   padding: 20px;
   border: none;
+  font-weight: bold;
+}
+
+td {
+  color: #f8f8ff;
 }
 
 table {

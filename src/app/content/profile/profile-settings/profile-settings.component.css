@@ -26,6 +26,25 @@ form{
   text-align: end;
 }
 
+.btn-danger {
+  font-weight: bold;
+}
+
+.btn-secondary {
+  background-color: #121212;
+  font-weight: bold;
+  border: none;
+  padding: 5px;
+}
+
+.btn-secondary:hover {
+  background-color: black;
+}
+
+input[type="file"] {
+  font-weight: bold;
+}
+
 .alert { 
   margin-top: 5px;
   padding: 5px;

@@ -1,13 +1,43 @@
 .navbar-brand {
-    font-family: 'Lobster', cursive;
-    font-size: 34px;
+  font-family: 'Lobster', cursive;
+  font-size: 34px;
 }
 
 .form-group {
-    margin-top: 5px;
+  margin-top: 5px;
 }
 
 .nav-item {
-    font-size: 18px;
-    margin-top: 5px;
+  font-size: 18px;
+  margin-top: 5px;
+}
+
+#navbar-main {
+  background-color: #121212;
+}
+
+.dropdown > li > a:hover {
+  background-color: #282828;
+}
+
+.logout {
+  color: white;
+  font-weight: bold;
+  background-color: #e73e3ee7;
+}
+
+.dropdown-menu {
+  background-color: #121212;
+  padding: 5px;
+}
+
+input[type="text"],
+select,
+option {
+  font-weight: bold;
+}
+
+#username {
+  font-weight: bold;
+  color: olivedrab;
 }

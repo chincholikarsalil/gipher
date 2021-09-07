@@ -1,0 +1,73 @@
+<form [formGroup]="updateDetailsForm">
+  <table class="table table-striped">
+    <tbody>
+      <tr>
+        <th colspan="2">Update Details</th>
+      </tr>
+      <tr>
+        <th scope="row">Name:</th>
+        <td>
+          <input id="name" type="text" [formControl]="editName" class="form-control" placeholder="Name" />
+          <div *ngIf="editName?.invalid && (editName?.dirty || editName?.touched)" class="alert alert-danger">
+            <div class="editName" *ngIf="editName.errors?.required">
+              Name is required
+            </div>
+            <div class="editName" *ngIf="editName.errors?.minlength">
+              Name must be at least 5 characters long
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Phone:</th>
+        <td>
+          <input id="phone" type="tel" [formControl]="editMobileNumber" class="form-control" placeholder="Phone" />
+          <div class="editMobileNumber"
+            *ngIf="editMobileNumber?.invalid && (editMobileNumber?.dirty || editMobileNumber?.touched)"
+            class="alert alert-danger">
+            <div *ngIf="editMobileNumber.errors?.required">
+              Mobile number is required
+            </div>
+            <div
+              *ngIf="editMobileNumber?.errors || (editMobileNumber.errors?.minlength || editMobileNumber.errors?.maxLength)">
+              Mobile number should be 10 digit long
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">DOB:</th>
+        <td>
+          <input id="dob" type="date" min="1960-01-01" max="2006-12-31" [formControl]="editDob" class="form-control" />
+          <div *ngIf="editDob?.invalid && (editDob?.dirty || editDob?.touched)" class="alert alert-danger">
+            <div *ngIf="editDob.errors?.required">
+              Date of Birth is required
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Password:</th>
+        <td>
+          <input id="password" type="password" [formControl]="editDetailsPassword" class="form-control"
+            placeholder="Password" />
+          <div *ngIf="editDetailsPassword?.invalid && (editDetailsPassword?.dirty || editDetailsPassword?.touched)"
+            class="alert alert-danger">
+            <div class="password" *ngIf="editDetailsPassword.errors?.required">
+              Password is required
+            </div>
+            <div class="password" *ngIf="editDetailsPassword.errors?.minlength">
+              Password must be at least 5 characters long
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row" colspan="2">
+          <input type="submit" [disabled]="!updateDetailsForm?.valid" class="container form-control btn-success w-50"
+            (click)="updateDetails()" />
+        </th>
+      </tr>
+    </tbody>
+  </table>
+</form>

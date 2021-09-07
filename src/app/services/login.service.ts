@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { User } from '../user';
+import { User, UserPicture } from '../user';
 
 @Injectable({
   providedIn: 'root'
@@ -21,19 +21,22 @@ export class LoginService {
     return this.http.get("http://localhost:8080/user/" + this.username, {responseType: 'json'});
   }
 
+  setUserDetails(data: User) {
+    window.sessionStorage.setItem("login", "true");
+    window.sessionStorage.setItem("username", data.username);
+    window.sessionStorage.setItem("name", data.name);
+    window.sessionStorage.setItem("email", data.email);
+    window.sessionStorage.setItem("mobileNumber", data.mobileNumber);
+    window.sessionStorage.setItem("dob", data.dob);
+    window.sessionStorage.setItem("joinedOn", data.joinedOn);
+  }
+
   login(username: string, loginDetails: string) {
     this.username = username;
     this.http.post<User>("http://localhost:8080/user/login", loginDetails).subscribe(
       data => {
         if (data != null && data.username == this.username) {
-          window.sessionStorage.setItem("login", "true");
-          window.sessionStorage.setItem("username", data.username);
-          window.sessionStorage.setItem("name", data.name);
-          window.sessionStorage.setItem("email", data.email);
-          window.sessionStorage.setItem("mobileNumber", data.mobileNumber);
-          window.sessionStorage.setItem("dob", data.dob);
-          window.sessionStorage.setItem("joinedOn", data.joinedOn);
-
+          this.setUserDetails(data);
           window.location.href = "/dashboard";
         } else {
           this.result = "Wrong credentials"
@@ -45,6 +48,11 @@ export class LoginService {
         this.result = error.error.text;
         window.sessionStorage.clear();
         window.sessionStorage.setItem("login", "false");
+      }
+    );
+    this.http.post<UserPicture>("http://localhost:8080/user/login/picture", loginDetails).subscribe(
+      data => {
+        window.sessionStorage.setItem("userPicture", data.image);
       }
     );
   }

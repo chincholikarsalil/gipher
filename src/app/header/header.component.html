@@ -1,4 +1,4 @@
-<nav class="container-fluid navbar navbar-expand-lg navbar navbar-dark bg-dark">
+<nav class="container-fluid navbar navbar-expand-lg navbar navbar-dark" id="navbar-main">
   <div class="col-sm-12">
     <div class="row">
       <div class="col-sm-8">
@@ -10,29 +10,31 @@
                 <img src="https://cdn.worldvectorlogo.com/logos/giphy-logo-1.svg" alt="giphy" height="40px" />
               </div>
               <div class="col-sm-7">
-                <a class="navbar-brand" href="dashboard">Gipher</a>
+                <a class="navbar-brand ms-2" href="dashboard">Gipher</a>
               </div>
             </div>
           </div>
           <div class="col-sm-10 collapse navbar-collapse">
             <ul class="navbar-nav">
-              <li class="nav-item" *ngIf="currentPage != 'my-recommendations'">
+              <li class="nav-item ms-3" *ngIf="currentPage != 'my-recommendations'">
                 <a class="nav-link" href="my-recommendations">Recommendation</a>
               </li>
-              <li class="nav-item" *ngIf="currentPage != '' && currentPage != 'dashboard' && currentPage != '#'">
+              <li class="nav-item ms-3" *ngIf="currentPage != '' && currentPage != 'dashboard' && currentPage != '#'">
                 <a class="nav-link" href="dashboard">Dashboard</a>
               </li>
-              <li class="nav-item dropdown">
+              <li class="nav-item dropdown ms-3">
                 <a class="nav-link dropdown-toggle" role="button" (click)="show=!show">
                   <fa-icon [icon]="faUser"></fa-icon>
                 </a>
                 <ul class="dropdown dropdown-menu" [ngClass]="{show: show === true}">
-                  <li *ngIf="currentPage != 'profile' && this.loginService.isLoggedIn()"><a class="dropdown-item" href="profile">Profile</a></li>
-                  <li *ngIf="currentPage != 'settings' && this.loginService.isLoggedIn()"><a class="dropdown-item" href="profile/settings">Settings</a></li>
-                  <li *ngIf="this.loginService.isLoggedIn()"><hr class="dropdown-divider"></li>
-                  <li *ngIf="!this.loginService.isLoggedIn()"><a class="dropdown-item" href="login">Login</a></li>
-                  <li *ngIf="!this.loginService.isLoggedIn()"><a class="dropdown-item" href="register">Register</a></li>
-                  <li *ngIf="this.loginService.isLoggedIn()" (click)="this.loginService.logout()"><a class="dropdown-item" href="login">Logout</a></li>
+                  <li *ngIf="this.loginService.isLoggedIn()"><a class="dropdown-item disabled" id="username">@{{ username }}</a></li>
+                  <li *ngIf="this.loginService.isLoggedIn()"><hr class="dropdown-divider text-light"></li>
+                  <li *ngIf="currentPage != 'profile' && this.loginService.isLoggedIn()"><a class="dropdown-item text-light" href="profile">Profile</a></li>
+                  <li *ngIf="currentPage != 'settings' && this.loginService.isLoggedIn()"><a class="dropdown-item text-light" href="profile/settings">Settings</a></li>
+                  <li *ngIf="this.loginService.isLoggedIn()"><hr class="dropdown-divider text-light"></li>
+                  <li *ngIf="!this.loginService.isLoggedIn()"><a class="dropdown-item text-light" href="login">Login</a></li>
+                  <li *ngIf="!this.loginService.isLoggedIn()"><a class="dropdown-item text-light" href="register">Register</a></li>
+                  <li *ngIf="this.loginService.isLoggedIn()" (click)="this.loginService.logout()"><a class="dropdown-item logout" href="login">Logout</a></li>
                 </ul>
               </li>
             </ul>
@@ -46,7 +48,7 @@
               [(ngModel)]="searchQuery" />
           </div>
           <div class="col-sm-3">
-            <select id="search-type" class="form-select" [(ngModel)]="searchType">
+            <select id="search-type" class="form-select dropdown" [(ngModel)]="searchType">
               <option value="gif" selected>GIF</option>
               <option value="sticker">Sticker</option>
             </select>

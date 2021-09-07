@@ -1,4 +1,4 @@
-<div class="container col-sm-12">
+<div class="container col-sm-12" id="recommendation-results">
   <h3>Recommended</h3>
   <br>
   <div *ngIf="this.recommendService.recommendedArray.length > 0; else norecommended">
@@ -14,7 +14,7 @@
     </div>
   </div>
   <ng-template #norecommended>
-    <div id="search-results" class="container col-xs-12">
+    <div id="recommendation-results" class="container col-xs-12">
       <h5 class="text text-warning">No recommendations yet</h5>
     </div>
   </ng-template>

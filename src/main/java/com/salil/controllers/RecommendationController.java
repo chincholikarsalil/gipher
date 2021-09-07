@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,13 +21,11 @@ public class RecommendationController {
 	Card card;
 	UserInterest userInterest;
 	List<Card> cardArray = new ArrayList<Card>();
-	RecommendationRepository repository;
-	UserInterestRepository userInterestRepository;
 	
-	public RecommendationController(RecommendationRepository repository, UserInterestRepository userInterestRepository) {
-		this.repository = repository;
-		this.userInterestRepository = userInterestRepository;
-	}
+	@Autowired
+	RecommendationRepository repository;
+	@Autowired
+	UserInterestRepository userInterestRepository;
 
 	@GetMapping("/recommended/all-cards")
 	public List<Card> cards() {

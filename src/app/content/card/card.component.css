@@ -1,28 +1,37 @@
 .car-img-top {
-    padding: 5px;
+  padding: 5px;
 }
 
 .card {
-    width: 200px;
+  width: 200px;
+  background-color: #282828;
 }
 
 .cards {
-    padding: 5px;
+  padding: 5px;
 }
 
 .icon {
-    width: 10px;
-    height: 25px;
+  width: 10px;
+  height: 25px;
 }
 
 .count {
-    text-align: end;
+  text-align: end;
 }
 
 .counter {
-    width: 28px;
-    height: 28px;
-    background-color: lightskyblue;
-    border-radius: 100%;
-    border: 0px;
+  background-color: olivedrab;
+  color: #282828;
+  font-weight: bold;
+  border-radius: 100%;
+  border-color: #121212;
+}
+
+.card-footer {
+  background-color: #121212;
+}
+
+.gipher-image {
+  background-color: #121212;
 }

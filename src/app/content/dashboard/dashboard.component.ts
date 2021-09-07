@@ -10,6 +10,9 @@ export class DashboardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    document.getElementById('dashboard')!.style.display = 'none';
+    setTimeout(() => { document.getElementById('preloader')!.style.display = 'none'; }, 500);
+    setTimeout(() => { document.getElementById('dashboard')!.style.display = 'block'; }, 500);
   }
 
 }

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,13 +30,10 @@ public class CommentController {
 	Comments comments;
 	CommentDetails commentDetails;
 	UserInterest userInterest;
+	@Autowired
 	CommentRepository repository;
+	@Autowired
 	UserInterestRepository userInterestRepository;
-
-	public CommentController(CommentRepository repository, UserInterestRepository userInterestRepository) {
-		this.repository = repository;
-		this.userInterestRepository = userInterestRepository;
-	}
 
 	@GetMapping("/all-comments/{cardId}")
 	public Comments comments(@PathVariable String cardId) {

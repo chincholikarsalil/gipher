@@ -14,9 +14,6 @@ export class TrendingComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchService.fetchTrendingGifs();
-    document.getElementById('trending')!.style.display = 'none';
-    setTimeout(() => { document.getElementById('preloader')!.style.display = 'none'; }, 500);
-    setTimeout(() => { document.getElementById('trending')!.style.display = 'block'; }, 500);
   }
 
 }

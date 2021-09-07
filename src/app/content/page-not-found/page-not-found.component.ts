@@ -20,7 +20,7 @@ export class PageNotFoundComponent implements OnInit {
   }
 
   getNotFoundGif() {
-    this.fetchService.searchId = "lqFHf5fYMSuKcSOJph";
+    this.fetchService.searchId = "dsWhAIVlKZJrn5VdZv";
     this.fetchService.searchById.subscribe(
       data => {
         this.imgUrl = data.imgUrl

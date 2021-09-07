@@ -8,11 +8,11 @@
 </div>
 <div class="container col-sm-12" id="details">
   <div class="container col-sm-12">
-    <h3 [innerHTML]="card.title"></h3>
+    <h3 [innerHTML]="card!.title | titlecase"></h3>
     <hr><br>
     <div class="row justify-content-center">
       <div class="container col-sm-4">
-        <img src="{{ card.imgUrl }}" alt="{{ card.title }}" width="360px" height="260px">
+        <img src="{{ card!.imgUrl }}" alt="{{ card!.title }}" width="360px" height="260px" id="image" class="p-1">
       </div>
     </div>
   </div>
@@ -53,6 +53,7 @@
       </div>
     </div>
     <br><br>
-    <app-comments [cardId]="card.id"></app-comments>
+    <app-comments [cardId]="card!.id"></app-comments>
+    <br><br>
   </div>
 </div>

@@ -34,7 +34,6 @@ export class CommentsComponent implements OnInit {
     this.userInterestService.fetchLikedComments();
     this.userComment = this.commentService.userComment;
     this.userLikedComments = this.userInterestService.userLikedComments;
-    console.log(this.userInterestService.userLikedComments);
   }
 
   addComment() {

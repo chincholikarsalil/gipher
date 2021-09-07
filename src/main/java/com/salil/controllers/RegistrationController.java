@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -26,15 +27,12 @@ public class RegistrationController {
 
 	User user;
 	UserInterest userInterest;
+	@Autowired
 	UserRepository userRepository;
+	@Autowired
 	UserInterestRepository userInterestRepository;
 	DateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
 	DateFormat showFmt = new SimpleDateFormat("dd-MMM-yyyy");
-
-	public RegistrationController(UserRepository userRepository, UserInterestRepository userInterestRepository) {
-		this.userRepository = userRepository;
-		this.userInterestRepository = userInterestRepository;
-	}
 	
 	@PostMapping("/user/register")
 	public ResponseEntity<String> register(@RequestBody String user) throws JSONException, ParseException {

@@ -22,6 +22,10 @@ export class RegistrationComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
+    document.getElementById('register')!.style.display = 'none';
+    setTimeout(() => { document.getElementById('preloader')!.style.display = 'none'; }, 500);
+    setTimeout(() => { document.getElementById('register')!.style.display = 'block'; }, 500);
+
     this.email = new FormControl('', [Validators.required, Validators.email, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$")]);
     this.username = new FormControl('', [Validators.required, Validators.minLength(5)]);
     this.name = new FormControl('', [Validators.required, Validators.minLength(5)]);

@@ -1,3 +1,8 @@
 #favorite-paginate {
     margin-top: 20px;
 }
+
+#favorite-results {
+    color: white;
+    font-weight: bold;
+}

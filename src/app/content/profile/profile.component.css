@@ -20,6 +20,34 @@ form{
 }
 
 .card-footer {
-  border: 0px;
-  background-color: rgba(191, 205, 206, 0.63);
+  border: none;
+}
+
+.profile {
+  color: white;
+}
+
+.card-footer {
+  background-color: #282828;
+  border-radius: 10px;
+}
+
+th, td {
+  color: white;
+  padding: 20px;
+  border: none;
+}
+
+table {
+  outline: 2px solid #121212;
+}
+
+.table-striped > tbody > tr:nth-child(2n+1) > td, 
+.table-striped > tbody > tr:nth-child(2n+1) > th {
+  background-color: #121212;
+}
+
+#profile-pic {
+  padding: 2px;
+  background-color: #121212;
 }

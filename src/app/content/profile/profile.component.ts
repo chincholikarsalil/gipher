@@ -27,64 +27,16 @@ export class ProfileComponent implements OnInit {
     if (!this.loginService.isLoggedIn()) {
       window.location.href = "/login";
     }
+    if(window.sessionStorage.getItem("userPicture"))
+      this.imageSrc = window.sessionStorage.getItem("userPicture")!.toString();
   }
 
   ngOnInit(): void {
+    window.localStorage.removeItem(window.localStorage.getItem("query")!.toString());
   }
 
   editProfile() {
     window.location.href = "http://localhost:4200/profile/settings";
-  }
-
-  deleteUser() {
-    let delPwd = prompt("Confirm your password to delete your profile");
-    this.http.post<string>("http://localhost:8080/user/delete", JSON.stringify({ "username": sessionStorage.getItem("username"), "delPwd": delPwd })).subscribe(
-      data => console.log(data),
-      error => {
-        alert(error.error.text)
-        if (error.error.text == "User deleted!") {
-          window.sessionStorage.clear();
-          window.location.href = "/login";
-        }
-      }
-    );
-  }
-
-  uploadPhoto() {
-    console.log("upload");
-  }
-
-  get f() {
-    return this.imageUpload.controls;
-  }
-
-  onFileChange(event: any) {
-    const reader = new FileReader();
-
-    if (event.target.files && event.target.files.length) {
-      const [file] = event.target.files;
-      reader.readAsDataURL(file);
-
-      reader.onload = () => {
-
-        this.imageSrc = reader.result as string;
-
-        this.imageUpload.patchValue({
-          fileSource: reader.result
-        });
-
-      };
-
-    }
-  }
-
-  submit() {
-    console.log(this.imageUpload.value);
-    this.http.post('http://localhost:8001/upload.php', this.imageUpload.value)
-      .subscribe(res => {
-        console.log(res);
-        alert('Uploaded Successfully.');
-      })
   }
 
 }

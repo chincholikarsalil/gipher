@@ -23,6 +23,8 @@ import { ProfileSettingsComponent } from './content/profile/profile-settings/pro
 import { DashboardComponent } from './content/dashboard/dashboard.component';
 import { FavoritesComponent } from './content/favorites/favorites.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { UpdateDetailsComponent } from './content/profile/profile-settings/update-details/update-details.component';
+import { UpdatePasswordComponent } from './content/profile/profile-settings/update-password/update-password.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     RegistrationComponent,
     ProfileSettingsComponent,
     DashboardComponent,
-    FavoritesComponent
+    FavoritesComponent,
+    UpdateDetailsComponent,
+    UpdatePasswordComponent
   ],
   imports: [
     BrowserModule,

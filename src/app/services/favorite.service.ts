@@ -23,10 +23,9 @@ export class FavoriteService {
   updateFavoriteArray() {
     this.favorites.subscribe(
       data => {
-        this.favoriteArray = data
-        this.favoriteArray = this.favoriteArray.filter(
-          c => c.id === this.userInterestService.userFavoriteArray.find(cc => cc)
-        );
+        for(let i = 0; i < data.length; i++)
+          if(this.userInterestService.userFavoriteArray.includes(data[i].id))
+            this.favoriteArray.push(data[i]);
       },
       error => { }
     );
@@ -38,9 +37,8 @@ export class FavoriteService {
 
   favorite(card: Card) {
     this.http.post<Card>("http://localhost:8080/card/favorite", card).subscribe();
-
-    this.userInterestService.favorite(card.id);
     this.updateFavoriteArray();
+    this.userInterestService.favorite(card.id);
     window.location.reload();
   }
 
@@ -49,8 +47,8 @@ export class FavoriteService {
       (obj) => obj != this.favoriteArray.find(c => c.id === card.id)
     );
     this.http.post<Card>("http://localhost:8080/card/unfavorite", card).subscribe();
-    this.userInterestService.unfavorite(card.id);
     this.updateFavoriteArray();
+    this.userInterestService.unfavorite(card.id);
     window.location.reload();
   }
 

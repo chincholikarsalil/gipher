@@ -27,6 +27,8 @@ export class ProfileComponent implements OnInit {
     if (!this.loginService.isLoggedIn()) {
       window.location.href = "/login";
     }
+    if(window.sessionStorage.getItem("userPicture"))
+      this.imageSrc = window.sessionStorage.getItem("userPicture")!.toString();
   }
 
   ngOnInit(): void {

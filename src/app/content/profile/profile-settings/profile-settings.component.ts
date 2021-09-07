@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from 'src/app/services/login.service';
+import { UserPicture } from 'src/app/user';
 
 @Component({
   selector: 'app-profile-settings',
@@ -10,22 +11,25 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class ProfileSettingsComponent implements OnInit {
 
-  imageSrc: string = '../../favicon.ico';
-  imageUpload = new FormGroup({
-    file: new FormControl('', [Validators.required]),
-    fileSource: new FormControl('', [Validators.required])
-  });
-
   name = sessionStorage.getItem("name");
   username = "@" + sessionStorage.getItem("username");
   email = sessionStorage.getItem("email");
   mobileNumber = "+91" + sessionStorage.getItem("mobileNumber");
   dob = sessionStorage.getItem("dob");
 
+  imageSrc: string = '../../favicon.ico';
+  imageUpload = new FormGroup({
+    username: new FormControl(this.username.slice(1)),
+    name: new FormControl('', [Validators.required]),
+    image: new FormControl('', [Validators.required])
+  });
+
   constructor(private http: HttpClient, private loginService: LoginService) {
     if (!this.loginService.isLoggedIn()) {
       window.location.href = "/login";
     }
+    if(window.sessionStorage.getItem("userPicture"))
+      this.imageSrc = window.sessionStorage.getItem("userPicture")!.toString();
   }
 
   ngOnInit(): void {
@@ -34,7 +38,7 @@ export class ProfileSettingsComponent implements OnInit {
 
   deleteUser() {
     let delPwd = prompt("Confirm your password to delete your profile");
-    this.http.post<string>("http://localhost:8080/user/delete", JSON.stringify({ "username": sessionStorage.getItem("username"), "delPwd": delPwd })).subscribe(
+    this.http.post<string>("http://localhost:8080/user/delete", JSON.stringify({ "username": this.username.slice(1), "delPwd": delPwd })).subscribe(
       data => console.log(data),
       error => {
         alert(error.error.text)
@@ -44,10 +48,6 @@ export class ProfileSettingsComponent implements OnInit {
         }
       }
     );
-  }
-
-  uploadPhoto() {
-    console.log("upload");
   }
 
   get f() {
@@ -66,7 +66,8 @@ export class ProfileSettingsComponent implements OnInit {
         this.imageSrc = reader.result as string;
 
         this.imageUpload.patchValue({
-          fileSource: reader.result
+          name: file.name,
+          image: reader.result
         });
 
       };
@@ -75,10 +76,10 @@ export class ProfileSettingsComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.imageUpload.value);
-    this.http.post('http://localhost:8001/upload.php', this.imageUpload.value).subscribe(
-      res => {
-        console.log(res);
+    console.log(this.imageUpload.value)
+    this.http.post<UserPicture>('http://localhost:8080/user/edit/picture', this.imageUpload.value).subscribe(
+      data => {
+        window.sessionStorage.setItem("userPicture", data.image);
         alert('Uploaded Successfully.');
       }
     );

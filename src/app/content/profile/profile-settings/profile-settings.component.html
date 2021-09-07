@@ -13,8 +13,8 @@
                     <label for="picture"></label>
                     <input type="file" id="picture" accept="image/*" class="btn w-100 form-control"
                       (change)="onFileChange($event)" />
-                    <div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger">
-                      <div *ngIf="f.file.errors && f.file.errors.required">File is required.</div>
+                    <div *ngIf="f.name.touched && f.name.invalid" class="alert alert-danger">
+                      <div *ngIf="f.name.errors && f.name.errors.required">File is required.</div>
                     </div>
                   </div>
                   <div class="col-sm-12">

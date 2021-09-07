@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.salil.entities.User;
+import com.salil.entities.UserPicture;
+import com.salil.repository.UserPictureRepository;
 import com.salil.repository.UserRepository;
 
 @Controller
@@ -17,8 +19,11 @@ import com.salil.repository.UserRepository;
 public class ModifyUserController {
 
 	User user;
+	UserPicture userPicture;
 	@Autowired
-	UserRepository userRepository;;
+	UserRepository userRepository;
+	@Autowired
+	UserPictureRepository userPictureRepository;
 
 	@PostMapping("/user/delete")
 	public String deleteUser(@RequestBody String user) {
@@ -68,4 +73,23 @@ public class ModifyUserController {
 		}
 		return null;
 	}
+	
+	@PostMapping("user/edit/picture")
+	public UserPicture editUserPicture(@RequestBody String user) {
+		JSONObject json = new JSONObject(user);
+		if(this.userPictureRepository.existsById(json.getString("username"))) {
+			this.userPicture = this.userPictureRepository.findById(json.getString("username")).get();
+			this.userPicture.setName(json.getString("name"));
+			this.userPicture.setImage(json.getString("image"));
+			this.userPictureRepository.save(this.userPicture);
+		} else {
+			this.userPicture = new UserPicture();
+			this.userPicture.setUsername(json.getString("username"));
+			this.userPicture.setName(json.getString("name"));
+			this.userPicture.setImage(json.getString("image"));
+			this.userPictureRepository.insert(this.userPicture);
+		}
+		return this.userPicture;
+	}
+	
 }

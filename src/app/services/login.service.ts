@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { User } from '../user';
+import { User, UserPicture } from '../user';
 
 @Injectable({
   providedIn: 'root'
@@ -48,6 +48,11 @@ export class LoginService {
         this.result = error.error.text;
         window.sessionStorage.clear();
         window.sessionStorage.setItem("login", "false");
+      }
+    );
+    this.http.post<UserPicture>("http://localhost:8080/user/login/picture", loginDetails).subscribe(
+      data => {
+        window.sessionStorage.setItem("userPicture", data.image);
       }
     );
   }

@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.salil.entities.User;
+import com.salil.entities.UserPicture;
+import com.salil.repository.UserPictureRepository;
 import com.salil.repository.UserRepository;
 
 @Controller
@@ -17,11 +19,14 @@ import com.salil.repository.UserRepository;
 public class LoginController {
 
 	User user;
+	UserPicture userPicture;
 	@Autowired
 	UserRepository userRepository;
+	@Autowired
+	UserPictureRepository userPictureRepository;
 
 	@PostMapping("/user/login")
-	public User register(@RequestBody String user) {
+	public User login(@RequestBody String user) {
 		JSONObject json = new JSONObject(user);
 		if(this.userRepository.existsById(json.getString("username"))) {
 			this.user = this.userRepository.findById(json.getString("username")).get();
@@ -33,5 +38,15 @@ public class LoginController {
 		} else {
 			return null;
 		}
+	}
+	
+	@PostMapping("/user/login/picture")
+	public UserPicture getUserPicture(@RequestBody String user) {
+		JSONObject json = new JSONObject(user);
+		if(this.userPictureRepository.existsById(json.getString("username"))) {
+			this.userPicture = this.userPictureRepository.findById(json.getString("username")).get();
+			return this.userPicture;
+		}
+		return null;
 	}
 }

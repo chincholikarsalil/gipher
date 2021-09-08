@@ -1,0 +1,8 @@
+dist
+node_modules
+.git
+.gitignore
+.env
+
+### VS Code ###
+.vscode/

@@ -1,23 +1,40 @@
 <div class="card-group">
   <div class="cards" *ngFor="let card of cardArray">
-    <div class="card h-100 p-1 gipher-card">
-      <img class="card-img-top gipher-image" src="{{ card.imgUrl }}" alt="Card image" width="200px" height="160px" (click)="openCard(card.id)">
+    <div class="card text-light h-100 p-1 gipher-card">
+      <img class="card-img-top gipher-image p-1" src="{{ card.imgUrl }}" alt="Card image" width="200px" height="160px" (click)="openCard(card.id)">
       <div class="card-body" (click)="openCard(card.id)">
-        <h6 class="card-title">{{ card.title }}</h6>
+        <h6 class="card-title">{{ card.title  | titlecase }}</h6>
       </div>
       <div class="card-footer justify-content-between">
         <div class="col-sm-12">
           <div class="row">
             <div class="col-sm-2" *ngIf="!this.recommendService.isRecommended(card)">
-              <button class="btn btn-outline-success icon recommend" (click)="this.recommendService.recommend(card)">
+              <button class="btn btn-outline-success icon recommend" (click)="this.recommendService.recommend(card)" [disabled]="!this.loginService.isLoggedIn()">
                 <fa-icon [icon]="faRecommend" transform="shrink-4 left-7 up-6">
                 </fa-icon>
               </button>
             </div>
             <div class="col-sm-2" *ngIf="this.recommendService.isRecommended(card)">
-              <button class="btn btn-outline-danger icon unrecommend" (click)="this.recommendService.unrecommend(card)">
+              <button class="btn btn-outline-danger icon unrecommend" (click)="this.recommendService.unrecommend(card)" [disabled]="!this.loginService.isLoggedIn()">
                 <fa-icon [icon]="faUnrecommend" transform="shrink-4 left-7 up-6">
                 </fa-icon>
+              </button>
+            </div>
+            <div class="col-sm-2" *ngIf="!this.favoriteService.isFavorite(card)">
+              <button class="btn btn-outline-warning icon favorite" (click)="this.favoriteService.favorite(card)" [disabled]="!this.loginService.isLoggedIn()">
+                <fa-icon [icon]="faFavorite" transform="shrink-4 left-8 up-6">
+                </fa-icon>
+              </button>
+            </div>
+            <div class="col-sm-2" *ngIf="this.favoriteService.isFavorite(card)">
+              <button class="btn btn-outline-danger icon unfavorite" (click)="this.favoriteService.unfavorite(card)" [disabled]="!this.loginService.isLoggedIn()">
+                <fa-icon [icon]="faUnfavorite" transform="shrink-4 left-8 up-6">
+                </fa-icon>
+              </button>
+            </div>
+            <div class="col-sm-8 count" *ngIf="card.recommendCount > 0">
+              <button class="text counter">
+                {{ card.recommendCount }}
               </button>
             </div>
           </div>

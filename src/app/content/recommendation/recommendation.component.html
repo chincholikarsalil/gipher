@@ -1,6 +1,21 @@
-<div class="container col-sm-12" *ngIf="this.recommendService.recommendedArray.length > 0">
+<div class="container col-sm-12" id="recommendation-results">
   <h3>Recommended</h3>
   <br>
-  <app-card [cardArray]="this.recommendService.recommendedArray"></app-card>
-  <hr>
+  <div *ngIf="this.recommendService.recommendedArray.length > 0; else norecommended">
+    <div class="row content-row">
+      <app-card
+        [cardArray]="this.recommendService.recommendedArray | paginate:{id: 'recommended-paginate', itemsPerPage:12, currentPage:p}">
+      </app-card>
+    </div>
+    <br>
+    <div class="d-flex">
+      <pagination-controls id="recommended-paginate" class="paginate mx-auto my-pagination" (pageChange)="p=$event">
+      </pagination-controls>
+    </div>
+  </div>
+  <ng-template #norecommended>
+    <div id="recommendation-results" class="container col-xs-12">
+      <h5 class="text text-warning">No recommendations yet</h5>
+    </div>
+  </ng-template>
 </div>

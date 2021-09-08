@@ -1,8 +1,11 @@
 package com.salil.repository;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
-import com.salil.entities.Comment;
+import org.springframework.stereotype.Repository;
 
-public interface CommentRepository extends MongoRepository<Comment, String> {
+import com.salil.entities.Comments;
+
+@Repository
+public interface CommentRepository extends MongoRepository<Comments, String> {
 
 }

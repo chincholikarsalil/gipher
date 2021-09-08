@@ -1,4 +1,6 @@
 .content {
-  margin-bottom: 5em;
+  /* margin-bottom: 5em; */
   min-height: 100vh;
+  background-color: #121212;
+  opacity: 90%;
 }

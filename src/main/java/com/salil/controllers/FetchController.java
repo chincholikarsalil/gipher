@@ -24,7 +24,7 @@ public class FetchController {
 	String searchGIFEndpoint = "http://api.giphy.com/v1/gifs/search";
 	String searchStickerEndpoint = "https://api.giphy.com/v1/stickers/search";
 	String trendingEndpoint = "https://api.giphy.com/v1/gifs/trending";
-	String limit = "&limit=" + 6;
+	String limit = "&limit=" + 36;
 	String tail = "&rating=g&lang=en";
 	String query = "&q=";
 	String commonPart = apiKey + limit + tail;
@@ -66,7 +66,11 @@ public class FetchController {
 		for(int i = 0; i < data.length(); i++) {
 			this.id = data.getJSONObject(i).getString("id");
 			this.title = data.getJSONObject(i).getString("title");
-			this.imgUrl = data.getJSONObject(i).getJSONObject("images").getJSONObject("downsized").getString("url");
+			try {
+				this.imgUrl = data.getJSONObject(i).getJSONObject("images").getJSONObject("downsized").getString("url");
+			} catch(Exception e ) {
+				this.imgUrl = data.getJSONObject(i).getJSONObject("images").getJSONObject("original").getString("url");
+			}
 			this.card = new Card(this.id, this.title, this.imgUrl);
 			cardList.add(card);
 		}

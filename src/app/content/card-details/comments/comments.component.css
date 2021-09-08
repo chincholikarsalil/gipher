@@ -1,5 +1,61 @@
 .not-logged-in {
-    margin-left: 25%;
-    margin-right: 25%;
-    width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+  width: 50%;
+}
+
+.card-footer {
+  border: 0px;
+  background-color: #121212;
+  border: 0px;
+}
+
+.card {
+  border: 0px;
+}
+
+#comment-section {
+  background-color: #282828;
+}
+
+#username {
+  font-weight: bold;
+  color: olivedrab;
+}
+
+.btn-dark {
+  background-color: #121212;
+  border: none;
+}
+
+.no-comments {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.counter {
+  background-color: olivedrab;
+  color: #282828;
+  font-weight: bold;
+  border-radius: 100%;
+  border-color: #121212;
+  text-align: end;
+}
+
+input[type="text"],
+button {
+  font-weight: bold;
+}
+
+#userImage {
+  border: none;
+  background-color: #121212;
+}
+
+#userPicBtn:focus {
+  box-shadow: none;
+}
+
+#userPicBtn {
+  cursor: context-menu;
 }

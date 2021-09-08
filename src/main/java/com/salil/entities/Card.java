@@ -10,14 +10,13 @@ public class Card {
 	private String id;
 	private String title;
 	private String imgUrl;
-	private Boolean recommend;
+	private int recommendCount;
 
 	public Card(String id, String title, String imgUrl) {
-		super();
 		this.id = id;
 		this.title = title;
 		this.imgUrl = imgUrl;
-		this.recommend = false;
+		this.recommendCount = 0;
 	}
 
 	public String getId() {
@@ -44,12 +43,16 @@ public class Card {
 		this.imgUrl = imgUrl;
 	}
 
-	public Boolean getRecommend() {
-		return recommend;
+	public int getRecommendCount() {
+		return recommendCount;
 	}
 
-	public void setRecommend(Boolean recommend) {
-		this.recommend = recommend;
+	public void increment() {
+		this.recommendCount += 1;
+	}
+	
+	public void decrement() {
+		this.recommendCount -= 1;
 	}
 
 }

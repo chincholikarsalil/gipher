@@ -22,3 +22,11 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+#details {
+  color: white;
+}
+
+#image {
+  background-color: black;
+}

@@ -1,6 +1,6 @@
-<div class="card p-2">
-  <div class="input-group input-group-lg p-2 mt-3 mb-3" *ngIf="isLoggedIn(); else login">
-    <div class="col-sm-12">
+<div class="card p-2" id="comment-section">
+  <div class="p-2 mt-3 mb-3" *ngIf="isLoggedIn(); else login">
+    <div class="container col-sm-12" id="comment-area">
       <div class="row">
         <div class="col-sm-10">
           <input type="text" class="form-control col-sm-12" placeholder="Enter your comment" [(ngModel)]="comment" />
@@ -15,25 +15,41 @@
   </div>
   <ng-template #login>
     <div class="p-1 mt-3 mb-3">
-      <button class="btn btn-primary container not-logged-in">Login First</button>
+      <button class="btn btn-primary container not-logged-in" (click)="loginOk()">Login First</button>
     </div>
   </ng-template>
-  <br>
-  <div class="container col-sm-10 cards" *ngIf="userCommentArray">
-    <div class="card h-100 p-1 mb-3" *ngFor="let cmnt of userCommentArray; index as i">
-      <!-- User profile to be added with comment -->
-      <div class="card-body justify-content-between">
+  <hr>
+  <div class="container col-sm-10 cards mt-3" *ngIf="userComment.comments.length > 0; else noComments">
+    <div class="card h-100 mb-3" *ngFor="let cmnt of userComment.comments">
+      <div class="card-footer justify-content-between p-3">
         <div class="row">
-          <div class="col-sm-2">
-            <button class="btn btn-dark" disabled>
-              <fa-icon [icon]="faUser" transform="grow-2"></fa-icon>
+          <div class="col-sm-1">
+            <button class="btn btn-dark p-1" [disabled]="cmnt.userImage.length === 0" id="userPicBtn">
+              <span *ngIf="cmnt.userImage.length === 0"><fa-icon [icon]="faUser" transform="grow-2" class="p-2"></fa-icon></span>
+              <span *ngIf="cmnt.userImage.length > 0"><img src="{{ cmnt.userImage }}" id="userImage" width="40px" height="40px" transform="grow-2"/></span>
             </button>
           </div>
-          <div class="col-sm-9">
-            <p [innerHTML]="cmnt"></p>
+          <div class="col-sm-8 mt-1">
+            <a id="username">@{{ cmnt.username }}</a>
+            <a id="user-comment">&nbsp;:&nbsp;{{ cmnt.comment }}</a>
           </div>
-          <div class="col-sm-1">
-            <button class="btn btn-outline-danger" (click)="deleteComment(i)">
+          <div class="col-sm-1 mt-2">
+            <button class="text counter" disabled>
+              {{ cmnt.likes }}
+            </button>
+          </div>
+          <div class="col-sm-1 mt-1" *ngIf="isLoggedIn() && !this.userLikedComments.includes(cmnt.commentId)">
+            <button class="btn btn-outline-info" (click)="likeComment(cmnt.commentId)">
+              <fa-icon [icon]="faLike" transform="shrink-2"></fa-icon>
+            </button>
+          </div>
+          <div class="col-sm-1 mt-1" *ngIf="isLoggedIn() && this.userLikedComments.includes(cmnt.commentId)">
+            <button class="btn btn-outline-danger" (click)="dislikeComment(cmnt.commentId)">
+              <fa-icon [icon]="faDislike" transform="shrink-2"></fa-icon>
+            </button>
+          </div>
+          <div class="col-sm-1 mt-1" *ngIf="isLoggedIn() && username == cmnt.username">
+            <button class="btn btn-danger" (click)="deleteComment(cmnt.commentId)">
               <fa-icon [icon]="faDelete" transform="shrink-2"></fa-icon>
             </button>
           </div>
@@ -42,4 +58,9 @@
     </div>
     <br>
   </div>
+  <ng-template #noComments>
+    <div class="no-comments">
+      <h5 class="text text-warning">No Comments yet</h5>
+    </div>
+  </ng-template>
 </div>

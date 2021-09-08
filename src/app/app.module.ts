@@ -8,15 +8,23 @@ import { ContentComponent } from './content/content.component';
 import { SearchComponent } from './content/search/search.component';
 import { RecommendationComponent } from './content/recommendation/recommendation.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { TrendingComponent } from './content/trending/trending.component';
 import { CardComponent } from './content/card/card.component';
 import { CardDetailsComponent } from './content/card-details/card-details.component';
 import { CommentsComponent } from './content/card-details/comments/comments.component';
 import { FooterComponent } from './footer/footer.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './content/login/login.component';
 import { PageNotFoundComponent } from './content/page-not-found/page-not-found.component';
+import { ProfileComponent } from './content/profile/profile.component';
+import { RegistrationComponent } from './content/registration/registration.component';
+import { ProfileSettingsComponent } from './content/profile/profile-settings/profile-settings.component';
+import { DashboardComponent } from './content/dashboard/dashboard.component';
+import { FavoritesComponent } from './content/favorites/favorites.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { UpdateDetailsComponent } from './content/profile/profile-settings/update-details/update-details.component';
+import { UpdatePasswordComponent } from './content/profile/profile-settings/update-password/update-password.component';
 
 @NgModule({
   declarations: [
@@ -31,14 +39,23 @@ import { PageNotFoundComponent } from './content/page-not-found/page-not-found.c
     FooterComponent,
     CardComponent,
     LoginComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ProfileComponent,
+    RegistrationComponent,
+    ProfileSettingsComponent,
+    DashboardComponent,
+    FavoritesComponent,
+    UpdateDetailsComponent,
+    UpdatePasswordComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

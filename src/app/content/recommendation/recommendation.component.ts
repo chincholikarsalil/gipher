@@ -8,9 +8,15 @@ import { RecommendService } from 'src/app/services/recommend.service';
 })
 export class RecommendationComponent implements OnInit {
 
-  constructor(public recommendService: RecommendService) { }
+  p: number = 1;
+
+  constructor(public recommendService: RecommendService) {
+    if(!sessionStorage.getItem("username"))
+      window.location.href = "/login";
+  }
 
   ngOnInit(): void {
+    window.localStorage.removeItem(window.localStorage.getItem("query")!.toString());
     this.recommendService.updateRecommendedArray();
   }
 

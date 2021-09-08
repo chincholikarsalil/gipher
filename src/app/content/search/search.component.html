@@ -1,6 +1,5 @@
-<div *ngIf="this.fetchService.searchArray.length > 0">
+<div *ngIf="this.searchArray.length > 0" id="search">
   <div id="search-results" class="container col-xs-12">
-    <hr>
     <div *ngIf="this.fetchService.searchType == 'gif'; else sticker">
       <h3>Searched GIFs</h3>
     </div>
@@ -8,8 +7,19 @@
       <h3>Searched Stickers</h3>
     </ng-template>
     <br>
-    <app-card [cardArray]="this.fetchService.searchArray"></app-card>
+    <div class="row content-row">
+      <app-card
+        [cardArray]="this.searchArray | paginate:{id:'search-paginate', itemsPerPage:12, currentPage:p}">
+      </app-card>
+    </div>
+    <br>
+    <div class="d-flex">
+      <pagination-controls id="search-paginate" class="paginate mx-auto my-pagination" (pageChange)="p=$event">
+      </pagination-controls>
+    </div>
+    <hr>
   </div>
+  <br>
 </div>
 <div *ngIf="this.fetchService.noResults.length > 0">
   <hr>

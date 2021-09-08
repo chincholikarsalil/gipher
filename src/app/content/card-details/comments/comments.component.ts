@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
-import { faTrash, faUser } from '@fortawesome/free-solid-svg-icons';
-import { Observable } from 'rxjs';
-import { UserComment } from 'src/app/user-comment';
+import { faThumbsDown, faThumbsUp, faTrash, faUser } from '@fortawesome/free-solid-svg-icons';
+import { Comment } from 'src/app/comment';
+import { CommentService } from 'src/app/services/comment.service';
+import { LoginService } from 'src/app/services/login.service';
+import { UserInterestService } from 'src/app/services/user-interest.service';
 
 @Component({
   selector: 'app-comments',
@@ -14,54 +15,66 @@ export class CommentsComponent implements OnInit {
   @Input()
   cardId!: string;
   comment: string = '';
+  username: string = sessionStorage.getItem("username")?.toString() || "";
 
-  userComment!: UserComment;
-  userCommentArray!: Array<string>;
+  userComment: Comment = new Comment();
+  userLikedComments: Array<string> = []
+  userImage: string = '';
 
   faDelete = faTrash;
   faUser = faUser;
+  faLike = faThumbsUp;
+  faDislike = faThumbsDown;
 
-  constructor(private http: HttpClient) {
+  constructor(private commentService: CommentService, private loginService: LoginService, private userInterestService: UserInterestService) {
   }
 
   ngOnInit(): void {
-    this.fetchComments();
+    this.commentService.cardId = this.cardId;
+    this.commentService.fetchComments();
+    this.userInterestService.fetchLikedComments();
+    this.userComment = this.commentService.userComment;
+    this.userLikedComments = this.userInterestService.userLikedComments;
+    this.getUserImage();
   }
-
-  get allComments(): Observable<UserComment> {
-      return this.http.get<UserComment>('http://localhost:8080/all-comments/' + this.cardId, {responseType: 'json'});
-  }
-
-  fetchComments() {
-    this.allComments.subscribe(
-      data => {
-        if(data) {
-          this.userCommentArray = data.comments.toString().split(',');
-        }
-      }
-    );
+  
+  getUserImage() {
+    if(window.sessionStorage.getItem("userPicture"))
+      this.userImage = window.sessionStorage.getItem("userPicture")!.toString();
   }
 
   addComment() {
-    if (this.comment.length > 0) {
-      this.userComment = new UserComment();
-      this.userComment.id = this.cardId;
-      this.userComment.comments = this.comment;
-      this.http.post<string>('http://localhost:8080/comment/add', JSON.stringify(this.userComment)).subscribe();
-      window.location.reload()
-    }
+    this.commentService.cardId = this.cardId;
+    this.commentService.comment = this.comment;
+    this.commentService.addComment();
+    window.location.reload();
   }
 
-  deleteComment(index: number) {
-    this.userComment = new UserComment();
-    this.userComment.id = this.cardId;
-    this.userComment.comments = index.toString();
-    console.log(index.toString());
-    this.http.post<string>('http://localhost:8080/comment/delete', JSON.stringify(this.userComment)).subscribe();
-    window.location.reload()
+  deleteComment(commentId: string) {
+    this.commentService.cardId = this.cardId;
+    this.commentService.deleteComment(commentId);
+    window.location.reload();
+  }
+
+  likeComment(commentId: string) {
+    this.commentService.cardId = this.cardId;
+    this.commentService.likeComment(commentId);
+    this.userInterestService.likeComment(commentId);
+    window.location.reload();
+  }
+
+  dislikeComment(commentId: string) {
+    this.commentService.cardId = this.cardId;
+    this.commentService.dislikeComment(commentId);
+    this.userInterestService.dislikeComment(commentId);
+    window.location.reload();
   }
 
   isLoggedIn() {
-    return true;
+    return this.loginService.isLoggedIn();
+  }
+
+  loginOk() {
+    window.location.href = "login";
   }
 }

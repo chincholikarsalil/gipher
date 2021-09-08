@@ -1,0 +1,58 @@
+h1{
+  text-align:center;
+}
+
+form{
+  padding: 15px;
+  text-align: left;
+}
+
+.profile {
+  color: white;
+}
+
+.card-footer {
+  background-color: #282828;
+  border-radius: 10px;
+  border: none;
+}
+
+#profile-pic {
+  padding: 2px;
+  background-color: #121212;
+}
+
+.btn-dark {
+  background-color: #121212;
+}
+
+.editProfile {
+  text-align: end;
+}
+
+.btn-danger {
+  font-weight: bold;
+}
+
+.btn-secondary {
+  background-color: #121212;
+  font-weight: bold;
+  border: none;
+  padding: 5px;
+}
+
+.btn-secondary:hover {
+  background-color: black;
+}
+
+input[type="file"] {
+  font-weight: bold;
+}
+
+.alert { 
+  margin-top: 5px;
+  padding: 5px;
+  border-radius: 0px;
+  color: black;
+  background-color:whitesmoke;
+}

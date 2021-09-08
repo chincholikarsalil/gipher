@@ -8,6 +8,8 @@ import { FetchService } from 'src/app/services/fetch.service';
 })
 export class TrendingComponent implements OnInit {
 
+  p: number = 1;
+
   constructor(public fetchService: FetchService) { }
 
   ngOnInit(): void {

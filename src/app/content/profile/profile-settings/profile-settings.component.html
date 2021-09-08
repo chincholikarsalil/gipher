@@ -1,0 +1,62 @@
+<div class="container p-3 profile flex-center">
+  <div class="container">
+    <h1><img src="{{ imgUrl }}" width="30%"></h1>
+    <div class="container card-footer">
+      <form method="post">
+        <div class="row p-2">
+          <div class="col-sm-2">
+            <form [formGroup]="imageUpload">
+              <div class="row">
+                <div class="col-sm-9">
+                  <div class="col-sm-12">
+                    <label for="picture"></label>
+                    <input type="file" id="picture" accept="image/*" class="btn w-100 form-control"
+                      (change)="onFileChange($event)" />
+                    <div *ngIf="f.name.touched && f.name.invalid" class="alert alert-danger">
+                      <div *ngIf="f.name.errors && f.name.errors.required">File is required.</div>
+                    </div>
+                  </div>
+                  <div class="col-sm-12">
+                    <button class="btn btn-secondary w-100" type="submit" [disabled]="!f.name.valid" (click)="submit()">Upload</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col-sm-8">
+            <div class="row">
+              <div class="profile-head col-sm-4">
+                <div class="profile-head">
+                  <button class="btn btn-dark p-1" [disabled]="imageSrc.length === 0" id="userPicBtn">
+                    <span *ngIf="imageSrc.length === 0"><fa-icon [icon]="faUser" transform="grow-5" class="fa-3x p-2"></fa-icon></span>
+                    <span *ngIf="imageSrc.length > 0"><img [src]="imageSrc" class="p-0" height="100px" width="100px" id="profile-pic"></span>
+                  </button>
+                </div>
+              </div>
+              <div class="profile-head col-sm-8">
+                <h5>{{ name }}</h5>
+                <h6>{{ username }}</h6>
+                <h6>{{ email }}</h6>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2 editProfile">
+            <button type="button" class="btn btn-danger" (click)="deleteUser()">Delete Profile</button>
+          </div>
+        </div>
+        <hr>
+        <div class="row mt-4">
+          <div class="row">
+            <div class="col-sm-6">
+              <app-update-details></app-update-details>
+            </div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-5">
+              <app-update-password></app-update-password>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

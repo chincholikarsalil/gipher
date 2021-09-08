@@ -9,6 +9,7 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,6 +34,7 @@ public class RegistrationController {
 	UserInterestRepository userInterestRepository;
 	DateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
 	DateFormat showFmt = new SimpleDateFormat("dd-MMM-yyyy");
+	BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
 	
 	@PostMapping("/user/register")
 	public ResponseEntity<String> register(@RequestBody String user) throws JSONException, ParseException {
@@ -44,7 +46,7 @@ public class RegistrationController {
 			this.user.setName(json.getString("name"));
 			this.user.setEmail(json.getString("email"));
 			this.user.setMobileNumber(json.getString("mobileNumber"));
-			this.user.setPassword(json.getString("password"));
+			this.user.setPassword(bcrypt.encode(json.getString("password")));
 			this.user.setDob(json.getString("dob"));
 			this.user.setJoinedOn(json.getString("joinedOn"));
 			this.userRepository.insert(this.user);

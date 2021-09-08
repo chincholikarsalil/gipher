@@ -2,6 +2,7 @@ package com.salil.controllers;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,13 +25,14 @@ public class ModifyUserController {
 	UserRepository userRepository;
 	@Autowired
 	UserPictureRepository userPictureRepository;
+	BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
 
 	@PostMapping("/user/delete")
 	public String deleteUser(@RequestBody String user) {
 		JSONObject json = new JSONObject(user);
 		if(this.userRepository.existsById(json.getString("username"))) {
 			this.user = this.userRepository.findById(json.getString("username")).get();
-			if(this.user.getPassword().equals(json.getString("delPwd"))) {
+			if(bcrypt.matches(json.getString("delPwd"), this.user.getPassword())) {
 				this.userRepository.delete(this.user);
 				return "User deleted!";
 			} else {
@@ -45,7 +47,7 @@ public class ModifyUserController {
 		JSONObject json = new JSONObject(user);
 		if(this.userRepository.existsById(json.getString("username"))) {
 			this.user = this.userRepository.findById(json.getString("username")).get();
-			if(this.user.getPassword().equals(json.getString("password"))) {
+			if(bcrypt.matches(json.getString("password"), this.user.getPassword())) {
 				this.user.setName(json.getString("name"));
 				this.user.setDob(json.getString("dob"));
 				this.user.setMobileNumber(json.getString("mobileNumber"));
@@ -63,8 +65,8 @@ public class ModifyUserController {
 		JSONObject json = new JSONObject(user);
 		if(this.userRepository.existsById(json.getString("username"))) {
 			this.user = this.userRepository.findById(json.getString("username")).get();
-			if(this.user.getPassword().equals(json.getString("password"))) {
-				this.user.setPassword(json.getString("newPassword"));
+			if(bcrypt.matches(json.getString("password"), this.user.getPassword())) {
+				this.user.setPassword(bcrypt.encode(json.getString("newPassword")));
 				this.userRepository.save(this.user);
 				return this.user;
 			} else {

@@ -2,6 +2,7 @@ package com.salil.controllers;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,13 +25,14 @@ public class LoginController {
 	UserRepository userRepository;
 	@Autowired
 	UserPictureRepository userPictureRepository;
+	BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
 
 	@PostMapping("/user/login")
 	public User login(@RequestBody String user) {
 		JSONObject json = new JSONObject(user);
 		if(this.userRepository.existsById(json.getString("username"))) {
 			this.user = this.userRepository.findById(json.getString("username")).get();
-			if(this.user.getPassword().equals(json.get("password"))) {
+			if(bcrypt.matches(json.getString("password"), this.user.getPassword())) {
 				return this.user;
 			} else {
 				return null;

@@ -30,10 +30,10 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentPage = window.location.href.split('/')[window.location.href.split('/').length - 1];
-    this.getGipherLogo()
+    this.getGipherLogoAndUserImage()
   }
 
-  getGipherLogo() {
+  getGipherLogoAndUserImage() {
     this.fetchService.searchId = "VIWVhLsuxwBPtLYX8k";
     this.fetchService.searchById.subscribe(
       data => {

@@ -27,7 +27,10 @@
             <div class="row">
               <div class="profile-head col-sm-4">
                 <div class="profile-head">
-                  <img [src]="imageSrc" style="height: 100px; width: 100px" id="profile-pic">
+                  <button class="btn btn-dark p-1" [disabled]="imageSrc.length === 0" id="userPicBtn">
+                    <span *ngIf="imageSrc.length === 0"><fa-icon [icon]="faUser" transform="grow-5" class="fa-3x p-2"></fa-icon></span>
+                    <span *ngIf="imageSrc.length > 0"><img [src]="imageSrc" class="p-0" height="100px" width="100px" id="profile-pic"></span>
+                  </button>
                 </div>
               </div>
               <div class="profile-head col-sm-8">

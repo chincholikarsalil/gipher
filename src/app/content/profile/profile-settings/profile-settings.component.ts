@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FetchService } from 'src/app/services/fetch.service';
 import { LoginService } from 'src/app/services/login.service';
 import { UserPicture } from 'src/app/user';
@@ -19,8 +20,9 @@ export class ProfileSettingsComponent implements OnInit {
   dob = sessionStorage.getItem("dob");
 
   imgUrl!: string;
+  faUser = faUser;
 
-  imageSrc: string = '../../favicon.ico';
+  imageSrc: string = '';
   imageUpload = new FormGroup({
     username: new FormControl(this.username.slice(1)),
     name: new FormControl('', [Validators.required]),
@@ -52,10 +54,10 @@ export class ProfileSettingsComponent implements OnInit {
   deleteUser() {
     let delPwd = prompt("Confirm your password to delete your profile");
     this.http.post<string>("http://localhost:8080/user/delete", JSON.stringify({ "username": this.username.slice(1), "delPwd": delPwd })).subscribe(
-      data => console.log(data),
-      error => {
-        alert(error.error.text)
-        if (error.error.text == "User deleted!") {
+      error => console.log(error),
+      data => {
+        alert(data.error.text)
+        if (data.error.text == "User deleted!") {
           window.sessionStorage.clear();
           window.location.href = "/login";
         }

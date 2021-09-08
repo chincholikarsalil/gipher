@@ -24,30 +24,31 @@
       <div class="card-footer justify-content-between p-3">
         <div class="row">
           <div class="col-sm-1">
-            <button class="btn btn-light" disabled>
-              <fa-icon [icon]="faUser" transform="grow-2"></fa-icon>
+            <button class="btn btn-dark p-1" [disabled]="cmnt.userImage.length === 0" id="userPicBtn">
+              <span *ngIf="cmnt.userImage.length === 0"><fa-icon [icon]="faUser" transform="grow-2" class="p-2"></fa-icon></span>
+              <span *ngIf="cmnt.userImage.length > 0"><img src="{{ cmnt.userImage }}" id="userImage" width="40px" height="40px" transform="grow-2"/></span>
             </button>
           </div>
-          <div class="col-sm-8 mt-1 ml-1">
+          <div class="col-sm-8 mt-1">
             <a id="username">@{{ cmnt.username }}</a>
             <a id="user-comment">&nbsp;:&nbsp;{{ cmnt.comment }}</a>
           </div>
-          <div class="col-sm-1">
+          <div class="col-sm-1 mt-2">
             <button class="text counter" disabled>
               {{ cmnt.likes }}
             </button>
           </div>
-          <div class="col-sm-1" *ngIf="isLoggedIn() && !this.userLikedComments.includes(cmnt.commentId)">
+          <div class="col-sm-1 mt-1" *ngIf="isLoggedIn() && !this.userLikedComments.includes(cmnt.commentId)">
             <button class="btn btn-outline-info" (click)="likeComment(cmnt.commentId)">
               <fa-icon [icon]="faLike" transform="shrink-2"></fa-icon>
             </button>
           </div>
-          <div class="col-sm-1" *ngIf="isLoggedIn() && this.userLikedComments.includes(cmnt.commentId)">
+          <div class="col-sm-1 mt-1" *ngIf="isLoggedIn() && this.userLikedComments.includes(cmnt.commentId)">
             <button class="btn btn-outline-danger" (click)="dislikeComment(cmnt.commentId)">
               <fa-icon [icon]="faDislike" transform="shrink-2"></fa-icon>
             </button>
           </div>
-          <div class="col-sm-1" *ngIf="isLoggedIn() && username == cmnt.username">
+          <div class="col-sm-1 mt-1" *ngIf="isLoggedIn() && username == cmnt.username">
             <button class="btn btn-danger" (click)="deleteComment(cmnt.commentId)">
               <fa-icon [icon]="faDelete" transform="shrink-2"></fa-icon>
             </button>

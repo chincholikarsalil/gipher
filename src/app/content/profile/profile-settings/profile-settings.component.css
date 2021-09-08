@@ -22,6 +22,10 @@ form{
   background-color: #121212;
 }
 
+.btn-dark {
+  background-color: #121212;
+}
+
 .editProfile {
   text-align: end;
 }

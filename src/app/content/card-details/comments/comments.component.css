@@ -23,6 +23,11 @@
   color: olivedrab;
 }
 
+.btn-dark {
+  background-color: #121212;
+  border: none;
+}
+
 .no-comments {
   margin-left: auto;
   margin-right: auto;
@@ -40,4 +45,17 @@
 input[type="text"],
 button {
   font-weight: bold;
+}
+
+#userImage {
+  border: none;
+  background-color: #121212;
+}
+
+#userPicBtn:focus {
+  box-shadow: none;
+}
+
+#userPicBtn {
+  cursor: context-menu;
 }

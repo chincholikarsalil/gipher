@@ -3,11 +3,13 @@ package com.salil.entities;
 public class CommentDetails {
 	String commentId;
 	String username;
+	String userImage;
 	String comment;
 	int likes;
 	
 	public CommentDetails() {
 		this.likes = 0;
+		this.userImage = "";
 	}
 
 	public String getCommentId() {
@@ -24,6 +26,14 @@ public class CommentDetails {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+	
+	public String getUserImage() {
+		return userImage;
+	}
+
+	public void setUserImage(String userImage) {
+		this.userImage = userImage;
 	}
 
 	public String getComment() {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FetchService } from 'src/app/services/fetch.service';
 import { LoginService } from 'src/app/services/login.service';
 
@@ -10,7 +11,7 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class ProfileComponent implements OnInit {
 
-  imageSrc: string = '../favicon.ico';
+  imageSrc: string = '';
   imageUpload = new FormGroup({
     file: new FormControl('', [Validators.required]),
     fileSource: new FormControl('', [Validators.required])
@@ -24,6 +25,7 @@ export class ProfileComponent implements OnInit {
   joinedOn = sessionStorage.getItem("joinedOn");
 
   imgUrl!: string;
+  faUser = faUser;
 
   constructor(private fetchService: FetchService, private loginService: LoginService) {
     if (!this.loginService.isLoggedIn()) {

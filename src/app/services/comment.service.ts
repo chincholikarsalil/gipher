@@ -40,7 +40,12 @@ export class CommentService {
 
       this.commentDetails = new CommentDetails();
       this.commentDetails.comment = this.comment;
-      this.commentDetails.username = sessionStorage!.getItem("username")!.toString();
+      this.commentDetails.username = sessionStorage.getItem("username")!.toString();
+      if(sessionStorage.getItem("userPicture")) {
+        this.commentDetails.userImage = sessionStorage.getItem("userPicture")!.toString();
+      } else {
+        this.commentDetails.userImage = '';
+      }
       this.commentDetails.commentId = this.commentDetails.username + Math.random().toString();
 
       userComment.comments.push(this.commentDetails)

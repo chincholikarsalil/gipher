@@ -21,10 +21,12 @@ public class LoginController {
 
 	User user;
 	UserPicture userPicture;
+
 	@Autowired
 	UserRepository userRepository;
 	@Autowired
 	UserPictureRepository userPictureRepository;
+
 	BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
 
 	@PostMapping("/user/login")

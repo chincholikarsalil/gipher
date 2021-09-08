@@ -26,6 +26,7 @@ public class FavoriteController {
 	CardFav card;
 	UserInterest userInterest;
 	List<CardFav> cardArray = new ArrayList<CardFav>();
+
 	@Autowired
 	FavoriteRepository repository;
 	@Autowired

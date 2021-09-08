@@ -7,6 +7,7 @@ export class Comment {
 
 export class CommentDetails {
     username!: string;
+    userImage!: string;
     commentId!: string;
     comment!: string;
     likes!: number;

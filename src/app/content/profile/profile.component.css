@@ -15,6 +15,10 @@ form{
   font-weight: 500;
 }
 
+.btn-dark {
+  background-color: #121212;
+}
+
 .editButton {
   margin-right: 2px;
   background-color: #121212;

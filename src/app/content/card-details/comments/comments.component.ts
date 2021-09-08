@@ -19,6 +19,7 @@ export class CommentsComponent implements OnInit {
 
   userComment: Comment = new Comment();
   userLikedComments: Array<string> = []
+  userImage: string = '';
 
   faDelete = faTrash;
   faUser = faUser;
@@ -34,6 +35,12 @@ export class CommentsComponent implements OnInit {
     this.userInterestService.fetchLikedComments();
     this.userComment = this.commentService.userComment;
     this.userLikedComments = this.userInterestService.userLikedComments;
+    this.getUserImage();
+  }
+  
+  getUserImage() {
+    if(window.sessionStorage.getItem("userPicture"))
+      this.userImage = window.sessionStorage.getItem("userPicture")!.toString();
   }
 
   addComment() {

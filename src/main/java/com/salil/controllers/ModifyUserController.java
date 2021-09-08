@@ -21,28 +21,16 @@ public class ModifyUserController {
 
 	User user;
 	UserPicture userPicture;
+
 	@Autowired
 	UserRepository userRepository;
 	@Autowired
 	UserPictureRepository userPictureRepository;
+
 	BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
 
-	@PostMapping("/user/delete")
-	public String deleteUser(@RequestBody String user) {
-		JSONObject json = new JSONObject(user);
-		if(this.userRepository.existsById(json.getString("username"))) {
-			this.user = this.userRepository.findById(json.getString("username")).get();
-			if(bcrypt.matches(json.getString("delPwd"), this.user.getPassword())) {
-				this.userRepository.delete(this.user);
-				return "User deleted!";
-			} else {
-				return "Passwords don't match!";
-			}
-		}
-		return "Error";
-	}
-	
-	@PostMapping("user/edit/details")
+
+	@PostMapping("/user/edit/details")
 	public User editUserDetails(@RequestBody String user) {
 		JSONObject json = new JSONObject(user);
 		if(this.userRepository.existsById(json.getString("username"))) {
@@ -59,8 +47,8 @@ public class ModifyUserController {
 		}
 		return null;
 	}
-	
-	@PostMapping("user/edit/password")
+
+	@PostMapping("/user/edit/password")
 	public User editUserPassword(@RequestBody String user) {
 		JSONObject json = new JSONObject(user);
 		if(this.userRepository.existsById(json.getString("username"))) {
@@ -75,8 +63,8 @@ public class ModifyUserController {
 		}
 		return null;
 	}
-	
-	@PostMapping("user/edit/picture")
+
+	@PostMapping("/user/edit/picture")
 	public UserPicture editUserPicture(@RequestBody String user) {
 		JSONObject json = new JSONObject(user);
 		if(this.userPictureRepository.existsById(json.getString("username"))) {
@@ -93,5 +81,5 @@ public class ModifyUserController {
 		}
 		return this.userPicture;
 	}
-	
+
 }

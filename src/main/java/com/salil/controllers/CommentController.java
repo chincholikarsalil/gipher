@@ -30,6 +30,7 @@ public class CommentController {
 	Comments comments;
 	CommentDetails commentDetails;
 	UserInterest userInterest;
+
 	@Autowired
 	CommentRepository repository;
 	@Autowired
@@ -61,6 +62,7 @@ public class CommentController {
 		this.commentDetails = new CommentDetails();
 		this.commentDetails.setCommentId(cmnt.getJSONObject(0).getString("commentId"));
 		this.commentDetails.setUsername(cmnt.getJSONObject(0).getString("username"));
+		this.commentDetails.setUserImage(cmnt.getJSONObject(0).getString("userImage"));
 		this.commentDetails.setComment(cmnt.getJSONObject(0).getString("comment"));
 		this.commentDetails.setLikes(cmnt.getJSONObject(0).getInt("likes"));
 

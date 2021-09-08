@@ -28,12 +28,15 @@ public class RegistrationController {
 
 	User user;
 	UserInterest userInterest;
+
 	@Autowired
 	UserRepository userRepository;
 	@Autowired
 	UserInterestRepository userInterestRepository;
+
 	DateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
 	DateFormat showFmt = new SimpleDateFormat("dd-MMM-yyyy");
+
 	BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
 	
 	@PostMapping("/user/register")

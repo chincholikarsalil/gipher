@@ -41,3 +41,8 @@ option {
   font-weight: bold;
   color: olivedrab;
 }
+
+#userImage {
+  border: none;
+  border-radius: 50%;
+}

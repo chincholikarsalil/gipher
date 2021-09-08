@@ -24,7 +24,8 @@
               </li>
               <li class="nav-item dropdown ms-3">
                 <a class="nav-link dropdown-toggle" role="button" (click)="show=!show">
-                  <fa-icon [icon]="faUser"></fa-icon>
+                  <span *ngIf="userImage.length === 0"><fa-icon [icon]="faUser"></fa-icon></span>
+                  <span *ngIf="userImage.length > 0"><img src="{{ userImage }}" id="userImage" width="30px" height="30px"/></span>
                 </a>
                 <ul class="dropdown dropdown-menu" [ngClass]="{show: show === true}">
                   <li *ngIf="this.loginService.isLoggedIn()"><a class="dropdown-item disabled" id="username">@{{ username }}</a></li>

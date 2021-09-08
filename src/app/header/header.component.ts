@@ -22,6 +22,8 @@ export class HeaderComponent implements OnInit {
 
   imgUrl!: string;
 
+  userImage: string = '';
+
   show: boolean = false;
 
   constructor(private fetchService: FetchService, public loginService: LoginService) { }
@@ -38,6 +40,9 @@ export class HeaderComponent implements OnInit {
         this.imgUrl = data.imgUrl
       }
     );
+
+    if(window.sessionStorage.getItem("userPicture"))
+      this.userImage = window.sessionStorage.getItem("userPicture")!.toString();
   }
 
   search() {

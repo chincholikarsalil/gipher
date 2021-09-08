@@ -94,6 +94,7 @@ export class ProfileSettingsComponent implements OnInit {
       data => {
         window.sessionStorage.setItem("userPicture", data.image);
         alert('Uploaded Successfully.');
+        window.location.reload();
       }
     );
   }

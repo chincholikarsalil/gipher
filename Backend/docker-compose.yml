@@ -1,0 +1,26 @@
+version: '3'
+services:
+  #***************MongoDB***************
+  database_mongo:
+    container_name: mongo_container
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    networks:
+      - gipher-net
+  #***************Backend***************
+  backend_spring:
+    container_name: spring_container
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    links:
+      - mongo_container
+    networks:
+      - gipher-net
+      
+networks:
+  gipher-net:
+    driver: bridge

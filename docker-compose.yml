@@ -1,0 +1,39 @@
+version: '3'
+services:
+  #************MongoDB***************
+  database_mongo:
+    container_name: mongo_container
+    image: mongo:latest
+    hostname: gipher_mongo_host
+    environment:
+      - MONGO_INITDB_ROOT_DATABASE=gipher_mongo_db
+    ports:
+      - 27017:27017
+    networks:
+      - gipher-net
+  #************Backend***************
+  backend_spring:
+    container_name: spring_container
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    depends_on:
+      - database_mongo
+    networks:
+      - gipher-net
+  #************Frontend***************
+  frontend_angular:
+    container_name: angular_container
+    build:
+      context: ./Frontend
+      dockerfile: Dockerfile
+    ports:
+      - 4200:4200
+    networks:
+      - gipher-net
+      
+networks:
+  gipher-net:
+    driver: bridge

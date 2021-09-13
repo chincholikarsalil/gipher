@@ -1,0 +1,13 @@
+version: '3'
+services:
+  #***************Fontend***************
+  frontend_angular:
+    container_name: angular_container
+    build: 
+      context: .       
+      dockerfile: Dockerfile
+    ports:
+      - 4200:4200 
+    volumes:
+      - .:/home/app  
+      - /home/app/node_modules  

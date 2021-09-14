@@ -1,27 +1,43 @@
 # Gipher App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.4.
+Check the [PPT](https://github.com/chincholikarsalil/gipher/tree/master/Presentation) for more information
 
-## Development server
+## Installation
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Angular
 
-## Code scaffolding
+Step 1: Change directory using `cd Frontend` to Frontend
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Step 2: Use command `npm install` to install all the necessary node modules
 
-## Build
+### Spring Boot
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Step 1: Import the Backend directory as maven project in STS
 
-## Running unit tests
+Step 2: Run as maven install to generate the jar file
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Run the project
 
-## Running end-to-end tests
+Step 1: Go to the root directory of project and use command `docker-compose up` to create the docker images and start the containers
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Congratulations! Project is running now!
 
-## Further help
+## Contributors
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+<table>
+  <tr>
+    <td align="center">
+			<a href="https://github.com/chincholikarsalil">
+				<img src="https://avatars.githubusercontent.com/u/31334826?v=4?s=100" width="100px;" alt=""/><br />
+				<sub><b>Salil Chincholikar</b></sub></a><br />
+		</td>
+    <td align="center">
+			<a href="https://github.com/NishaHM">
+				<img src="https://avatars.githubusercontent.com/u/87312505?v=4?s=100" width="100px;" alt=""/><br />
+				<sub><b>Nisha HM</b></sub></a><br />
+		</td>
+		<td align="center">
+			<a href="https://github.com/jains5365">
+				<img src="https://avatars.githubusercontent.com/u/37591490?v=4?s=100" width="100px;" alt=""/><br />
+				<sub><b>Saloni Jain</b></sub></a><br />
+		</td>

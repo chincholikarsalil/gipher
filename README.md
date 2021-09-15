@@ -1,4 +1,4 @@
-# Gipher App
+_# Gipher App
 
 Check the [PPT](https://github.com/chincholikarsalil/gipher/tree/master/Presentation) for more information
 
@@ -27,17 +27,19 @@ Congratulations! Project is running now!
 <table>
   <tr>
     <td align="center">
-			<a href="https://github.com/chincholikarsalil">
-				<img src="https://avatars.githubusercontent.com/u/31334826?v=4?s=100" width="100px;" alt=""/><br />
-				<sub><b>Salil Chincholikar</b></sub></a><br />
-		</td>
+	<a href="https://github.com/chincholikarsalil">
+	<img src="https://avatars.githubusercontent.com/u/31334826?v=4?s=100" width="100px;" alt=""/><br />
+	<sub><b>Salil Chincholikar</b></sub></a><br />
+    </td>
     <td align="center">
-			<a href="https://github.com/NishaHM">
-				<img src="https://avatars.githubusercontent.com/u/87312505?v=4?s=100" width="100px;" alt=""/><br />
-				<sub><b>Nisha HM</b></sub></a><br />
-		</td>
-		<td align="center">
-			<a href="https://github.com/jains5365">
-				<img src="https://avatars.githubusercontent.com/u/37591490?v=4?s=100" width="100px;" alt=""/><br />
-				<sub><b>Saloni Jain</b></sub></a><br />
-		</td>
+	<a href="https://github.com/NishaHM">
+	<img src="https://avatars.githubusercontent.com/u/87312505?v=4?s=100" width="100px;" alt=""/><br />
+	<sub><b>Nisha HM</b></sub></a><br />
+    </td>
+    <td align="center">
+	<a href="https://github.com/jains5365">
+	<img src="https://avatars.githubusercontent.com/u/37591490?v=4?s=100" width="100px;" alt=""/><br />
+	<sub><b>Saloni Jain</b></sub></a><br />
+    </td>
+  </tr>
+</table>

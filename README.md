@@ -1,4 +1,4 @@
-_# Gipher App
+# Gipher App
 
 Check the [PPT](https://github.com/chincholikarsalil/gipher/tree/master/Presentation) for more information
 

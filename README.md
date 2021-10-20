@@ -14,7 +14,9 @@ Step 2: Use command `npm install` to install all the necessary node modules
 
 Step 1: Import the Backend directory as maven project in STS
 
-Step 2: Run as maven install to generate the jar file
+Step 2: Replace the sample API key in `.../controllers/FetchController.java` with your own API key. You can create a new API key _[here](https://developers.giphy.com/dashboard/)._
+
+Step 3: Run as maven install to generate the jar file
 
 ## Run the project
 
